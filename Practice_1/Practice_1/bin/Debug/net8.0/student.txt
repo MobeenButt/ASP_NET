@@ -1,4 +1,6 @@
-1,1,1,1
-2,2,2,2
-1,1,1,1,Student
-1121,1221,121,121,Student
+1,Mobeen,30,cs
+1,Mobeen,30,cs
+1,Mobeen,30,cs
+1,Mobeen,30,cs
+1,Mobeen,30,cs
+2,ALI,20,ME

@@ -13,7 +13,7 @@
         this.Department = Department;
         
     }
-
+    public Student() { }
 }
 class Program
 {
@@ -21,53 +21,36 @@ class Program
     public static void AddStudent()
     {
         Console.WriteLine("Enter Student Id:");
-        int id = int.Parse(Console.ReadLine());
+        int id = Convert.ToInt32(Console.ReadLine());
         Console.WriteLine("Enter Student Name:");
-        string name = Console.ReadLine();
+        string ?name = Console.ReadLine();
         Console.WriteLine("Enter Student Age:");
-        int age = int.Parse(Console.ReadLine());
+        int age = Convert.ToInt32(Console.ReadLine());
         Console.WriteLine("Enter Student Department:");
-        string department = Console.ReadLine();
+        string ?department = Console.ReadLine();
         Student st = new Student(id, name, age, department);
         using (FileStream file = new FileStream("student.txt", FileMode.Append))
         {
-            try
+            using (StreamWriter writer = new StreamWriter(file))
             {
-                using (StreamWriter writer = new StreamWriter(file))
-                {
-                    writer.WriteLine($"{st.Id},{st.Name},{st.Age},{st.Department},{st}");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                file.Close();
+                writer.WriteLine($"{st.Id},{st.Name},{st.Age},{st.Department}");
             }
         }
+        Console.WriteLine("Student added successfully.");
     }
     public static void ViewStudent()
     {
         using (FileStream file = new FileStream("student.txt", FileMode.Open))
         {
-            try
+            using(StreamReader reader=new StreamReader(file))
             {
-                using (StreamReader reader = new StreamReader(file))
+                string line;
+                while((line=reader.ReadLine())!=null)
                 {
-                    string data = reader.ReadToEnd();
-                    Console.WriteLine(data);
+                    Console.WriteLine(line);
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                file.Close();
-            }
+            file.Close();
         }
 
     }
