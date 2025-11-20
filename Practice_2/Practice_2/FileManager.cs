@@ -6,24 +6,13 @@
         {
             using (FileStream file = new FileStream(filename, FileMode.Append))
             {
-                try
+              using(StreamWriter writer =new StreamWriter(file))
+              {
+                foreach(var song in songs)
                 {
-                    using (StreamWriter writer = new StreamWriter(file))
-                    {
-                        foreach (var song in songs)
-                        {
-                            writer.WriteLine($"{song.songID},{song.title},{song.artist},{song.duration},{song.genere},{song.isLiked},{song.playCount}");
-                        }
-                    }
+                     writer.WriteLine($"{song.title},{song.artist},{song.duration},{song.genre},{song.isLiked},{song.playCount}");
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                finally
-                {
-                    file.Close();
-                }
+              }
             }
         }
         public List<Song> LoadSongsFromText(string filename)
@@ -35,20 +24,19 @@
                 {
                     using (StreamReader reader = new StreamReader(file))
                     {
-                        string line=reader.ReadLine();
-                        while(line!=null)
+                        string ?line;
+                        while((line = reader.ReadLine())!= null)
                         {
                             var parts = line.Split(',');
-                            if(parts.Length==7)
+                            if(parts.Length==6)
                             {
-                                int songID=int.Parse(parts[0]);
-                                string title=parts[1];
-                                string artist=parts[2];
-                                double duration=double.Parse(parts[3]);
-                                string genere=parts[4];
-                                bool isLiked=bool.Parse(parts[5]);
-                                int playCount=int.Parse(parts[6]);
-                                Song song=new Song(songID,title,artist,duration,genere,isLiked,playCount);
+                                string title=parts[0];
+                                string artist=parts[1];
+                                double duration=double.Parse(parts[2]);
+                                string genre=parts[3];
+                                bool isLiked=bool.Parse(parts[4]);
+                                int playCount=int.Parse(parts[5]);
+                                Song song=new Song(title,artist,duration,genre,isLiked,playCount);
                                 list.Add(song);
                             }
                         }
