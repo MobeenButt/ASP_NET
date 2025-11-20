@@ -1,0 +1,9 @@
+If we want to store objects in a file or send them over a network, we need to convert them into a format that can be easily saved or transmitted. This process is known as serialization.
+
+We convert in first JSON 
+
+Object -> Bytes -> Files -> Memeory-> Database
+
+
+Serialization is conversion of object to byte stream
+Deserialization is conversion of byte stream to object
