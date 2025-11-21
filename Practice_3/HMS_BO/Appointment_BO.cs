@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Practice_3
+namespace HMS_BO
 {
-    internal class Appointment
+    public class Appointment_BO
     {
         private int appointmentId;
         private int doctorId;
@@ -15,18 +15,17 @@ namespace Practice_3
             Random rnd = new Random();
             return rnd.Next(1000, 9999);
         }
-        public Appointment(int doctorId,string patientCnic,DateTime date)
+        public Appointment_BO(int doctorId, string patientCnic, DateTime date)
         {
             this.appointmentId = GenerateAppointmentID();
             this.doctorId = doctorId;
             this.patientCnic = patientCnic;
             this.appointmentDate = date;
         }
-        public int getAppointmentID { get=>appointmentId; }
+        public int getAppointmentID { get => appointmentId; }
         public override string ToString()
         {
             return $"Appointment ID: {appointmentId}, Doctor ID: {doctorId}, Patient CNIC: {patientCnic}, Date: {appointmentDate}";
         }
-
     }
 }

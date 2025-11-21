@@ -1,3 +1,7 @@
 <Solution>
+  <Project Path="HMS_BLL/HMS_BLL.csproj" Id="4006377c-6599-42a6-bef1-118c7c462082" />
+  <Project Path="HMS_BO/HMS_BO.csproj" Id="afe4e8a4-cf30-434e-93df-117db8b0dfa6" />
+  <Project Path="HMS_DAL/HMS_DAL.csproj" Id="464e5f61-5485-43a5-b427-57d91c2e2805" />
+  <Project Path="HMS_View/HMS_View.csproj" Id="5b95366e-c55b-4ac8-ad56-75f2f511d877" />
   <Project Path="Practice_3/Practice_3.csproj" />
 </Solution>
