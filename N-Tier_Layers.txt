@@ -1,0 +1,18 @@
+View (Presentation Layer) ->> Business Logic Layer ->> Data Access Layer
+
+Presentation Layer main hm input lyn gy sb sy phly then woh send 
+hoga Business Logic Layer ko koi calculation kryn gy then Data Access 
+Layer isko save kryn gy
+
+
+
+         Presentation Layer
+              |
+              v
+	 Business Layer
+              |
+              v
+	 Data Access Layer
+              |
+              v
+	 Main Program   
