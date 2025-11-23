@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HMS_BO\HMS_BO.csproj" />
+    <ProjectReference Include="..\HMS_DAL\HMS_DAL.csproj" />
   </ItemGroup>
 
 </Project>

@@ -6,13 +6,13 @@ Layer isko save kryn gy
 
 
 
-         Presentation Layer
+         Presentation Layer(code for input or display only)  (Multiple Frontends)
               |
               v
-	 Business Layer
+	 Business Layer(business logic calculations (data read kr k bhi logic yahan)) 
               |
               v
-	 Data Access Layer
+	 Data Access Layer(input ly liya calculations done (save krna ab)(read krna uska code))
               |
               v
-	 Main Program   
+	 Main Program   (Data Source)

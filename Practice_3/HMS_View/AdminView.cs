@@ -1,19 +1,19 @@
 ﻿using HMS_BO;
-using HMS_DAL;
+using HMS_BLL;
 
 namespace HMS_View
 {
     public class AdminView
     {
-        private readonly PatientDAL patientDAL;
-        private readonly DoctorDAL doctorDAL;
-        private readonly AppointmentDAL appointmentDAL;
+        private readonly PatientBLL patientBLL;
+        private readonly DoctorBLL doctorBLL;
+        private readonly AppointmentBLL appointmentBLL;
 
         public AdminView()
         {
-            patientDAL = new PatientDAL();
-            doctorDAL = new DoctorDAL();
-            appointmentDAL = new AppointmentDAL();
+            patientBLL = new PatientBLL();
+            doctorBLL = new DoctorBLL();
+            appointmentBLL = new AppointmentBLL();
         }
         
         public void Menu()
@@ -103,7 +103,7 @@ namespace HMS_View
             Console.WriteLine("Enter Patient CNIC:");
             string? cnic = Console.ReadLine();
             Patient_BO p = new Patient_BO(name, cnic);
-            //patientDAL.AddPatientToDatabase(p);
+            patientBLL.AddPatient(p);
             Console.WriteLine("Patient added successfully.");
             Menu();
         }
@@ -114,7 +114,7 @@ namespace HMS_View
             string? cnic = Console.ReadLine();
             Console.WriteLine("Enter new Patient Name:");
             string? name = Console.ReadLine();
-            patientDAL.UpdatePatientToDatabase(cnic, name);
+            patientBLL.UpdatePatient(cnic, name);
             Console.WriteLine("Patient updated successfully.");
             Menu();
         }
@@ -122,13 +122,13 @@ namespace HMS_View
         {
             Console.WriteLine("Enter Patient CNIC to delete:");
             string? cnic = Console.ReadLine();
-            patientDAL.DeletePatientToDatabase(cnic);
+            patientBLL.DeletePatient(cnic);
             Menu();
         }
         public void DisplayPatient()
         {
             Console.WriteLine("Displaying all patients:");
-            var list = patientDAL.DisplayPatient();
+            var list = patientBLL.DisplayPatient();
             foreach (var patients in list)
             {
                 Console.WriteLine($"Name: {patients.NAME}, CNIC: {patients.CNIC}");
@@ -143,7 +143,7 @@ namespace HMS_View
             Console.WriteLine("Enter Doctor Specializatoin:");
             string? specialization = Console.ReadLine();
             Doctor_BO d = new Doctor_BO(name, specialization);
-            doctorDAL.AddDoctorToDatabase(d);
+            doctorBLL.AddDoctor(d);
             Console.WriteLine("Doctor added successfully.");
             Menu();
         }
@@ -155,7 +155,7 @@ namespace HMS_View
             string? name = Console.ReadLine();
             Console.WriteLine("Enter Doctor Specializatoin:");
             string? specialization = Console.ReadLine();
-            doctorDAL.UpdateDoctorToDatabase(id, name, specialization);
+            doctorBLL.UpdateDoctor(id, name, specialization);
             Console.WriteLine("Doctor updated successfully.");
             Menu();
         }
@@ -163,18 +163,14 @@ namespace HMS_View
         {
             Console.WriteLine("Enter Doctor ID to delete:");
             int id = Convert.ToInt32(Console.ReadLine());
-            doctorDAL.DeleteDoctorToDatabase(id);
+            doctorBLL.DeleteDoctor(id);
             Console.WriteLine("Doctor deleted successfully.");
             Menu();
         }
         public void DisplayDoctors()
         {
             Console.WriteLine("Displaying ALL Doctors:");
-            var list = doctorDAL.DisplayDoctor();
-            foreach (var doctors in list)
-            {
-                Console.WriteLine($"DoctorID: {doctors.GetDoctorID},Doctor Name: {doctors.GetName},Specialization: {doctors.GetSpecialization}");
-            }
+
             Menu();
         }
         public void BookAppointment()
@@ -184,7 +180,7 @@ namespace HMS_View
             Console.WriteLine("Enter Patient CNIC:");
             string? cnic = Console.ReadLine();
             DateTime date = DateTime.Now;
-            appointmentDAL.BookAppointmentToDatabase(doctorID, cnic, date);
+            appointmentBLL.BookAppointment(doctorID, cnic, date);
             Menu();
         }
         public void CancelAppointment()
@@ -193,12 +189,12 @@ namespace HMS_View
             int id = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter Patient CNIC:");
             string? cnic = Console.ReadLine();
-            appointmentDAL.CancelAppointment(id, cnic);
+            appointmentBLL.CancelAppointment(id, cnic);
             Menu();
         }
         public void DeclareMostConsultedDoctor()
         {
-            appointmentDAL.GetMostConsultedDoctor();
+            appointmentBLL.GetMostConsultedDoctor();
             Menu();
         }
     }
