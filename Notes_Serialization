@@ -8,3 +8,8 @@ Object -> Bytes -> Files -> Memeory-> Database
 Serialization is conversion of object to byte stream
 Deserialization is conversion of byte stream to object
 
+
+
+hm objects ko bhi save kr skyn directly jis k liya phly 
+serialization hogi jo json, xml, binary form main hoti ha 
+
