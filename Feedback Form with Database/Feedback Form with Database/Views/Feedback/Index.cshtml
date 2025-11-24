@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Feedback Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .welcome-container {
+            background: #2d3748;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            padding: 60px 40px;
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            animation: fadeInUp 0.6s ease-out;
+            border: 1px solid #4a5568;
+        }
+
+        @@keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            color: #4fd1c5;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #f7fafc;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #cbd5e0;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .btn-feedback {
+            display: inline-block;
+            background: linear-gradient(135deg, #4fd1c5 0%, #38b2ac 100%);
+            color: #1a202c;
+            padding: 16px 48px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(79, 209, 197, 0.4);
+        }
+
+            .btn-feedback:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 6px 20px rgba(79, 209, 197, 0.6);
+            }
+
+            .btn-feedback:active {
+                transform: translateY(-1px);
+            }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid #4a5568;
+        }
+
+        .feature {
+            flex: 1;
+            padding: 0 10px;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .feature h3 {
+            font-size: 0.9rem;
+            color: #e2e8f0;
+            font-weight: 600;
+        }
+
+        @@media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .features {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .welcome-container {
+                padding: 40px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-container">
+        <div class="icon">💬</div>
+        <h1>Welcome to Our Feedback Portal</h1>
+        <p>We value your opinion! Share your thoughts, suggestions, and experiences with us. Your feedback helps us improve and serve you better.</p>
+
+        <a href="/Feedback/" class="btn-feedback">Share Your Feedback</a>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <h3>Quick & Easy</h3>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔒</div>
+                <h3>Secure</h3>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">✨</div>
+                <h3>Anonymous Option</h3>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

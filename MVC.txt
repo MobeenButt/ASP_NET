@@ -1,0 +1,10 @@
+MVC (Model View Controller)
+
+use for web applications
+
+UI-> View
+Backend Logic/Databases Classes-> Model
+Controller-> Control Application Flow
+
+
+User -> request-> Controller  -> Model/View
