@@ -1,1 +1,13 @@
-﻿
+﻿@model Feedback_Form_with_Database.Models.Feedback
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+}
+<p>Your feedback has been submitted successfully!</p>
+<h2>Feedback Summary</h2>
+<p>@Model.StudentName</p>
+<p>@Model.Course</p>
+<p>@Model.Comments</p>
+<p>@Model.Rating</p>
+<p>@Model.DateSubmitted</p>
+
+Click <a asp-action="AllFeedbacks">here</a> to view all feedback submissions.

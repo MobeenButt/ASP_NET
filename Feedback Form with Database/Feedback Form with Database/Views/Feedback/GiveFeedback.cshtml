@@ -1,1 +1,35 @@
-﻿
+﻿<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Give Feedback - Feedback Portal</title>
+        </head>
+            <body>
+                <h1>Give Feedback</h1>
+                <form method="post" action="/Feedback/GiveFeedback">
+                    <div>
+            <label for="StudentName">Name:</label>
+                        <input type="text" id="StudentName" name="StudentName" required />
+                    </div>
+                    <div>
+                        <label for="course">Course:</label>
+                        <input type="text" id="course" name="course" required />
+                    </div>
+                    <div>
+                        <label for="comments">Comments:</label>
+                        <textarea id="comments" name="comments" required></textarea>
+                    </div>
+                    <div>
+                        <label for="rating">Rating:</label>
+                        <select id="rating" name="rating" required>
+                            <option value="1">1 - Poor</option>
+                            <option value="2">2 - Fair</option>
+                            <option value="3">3 - Good</option>
+                            <option value="4">4 - Very Good</option>
+                            <option value="5">5 - Excellent</option>
+            </select>
+                    </div>
+                    <button type="submit">Submit Feedback</button>
+                </form>
+            </body>
+</html>
