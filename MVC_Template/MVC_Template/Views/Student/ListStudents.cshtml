@@ -1,0 +1,26 @@
+﻿@model List<MVC_Template.Models.Student>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Student List</h2>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>CGPA</th>
+            <th>Semester</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(MVC_Template.Models.Student student in Model)
+        {
+            <tr>
+                <td>@student.Name</td>
+                <td>@student.Age</td>
+                <td>@student.CGPA</td>
+                <td>@student.Semester</td>
+            </tr>
+        }
+    </tbody>
+</table>

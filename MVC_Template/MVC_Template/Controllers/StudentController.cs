@@ -9,14 +9,20 @@ namespace MVC_Template.Controllers
         {
             return View();
         }
-        [HttpPost]
+        //[HttpPost]
         //public ViewResult StudentForm(string name, int age, float cgpa, string semester)
         //{
         //    return View();
         //}
+        [HttpPost]
         public ViewResult StudentForm(Student s)
         {
-            return View();
+            StudentRepository.AddStudent(s);
+            return View("Thanks",s);
+        }
+        public ViewResult ListStudents()
+        {
+            return View(StudentRepository.students);
         }
 
     }

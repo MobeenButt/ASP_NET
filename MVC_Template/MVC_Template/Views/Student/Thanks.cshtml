@@ -1,0 +1,12 @@
+﻿@model MVC_Template.Models.Student
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<p>Thank you, @Model.Name, for submitting your details!</p>
+
+<p>@Model.Name</p>
+<p>@Model.Age</p>
+<p>@Model.CGPA</p>
+<p>@Model.Semester</p>
+
+Click <a asp-action="ListStudents">here</a> to view all Students.
