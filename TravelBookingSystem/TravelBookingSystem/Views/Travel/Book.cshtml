@@ -1,49 +1,478 @@
 ﻿@model TravelPackage
+@{
+    ViewBag.Title = "Book Package";
+}
 
-<h2>Book @Model.PackageName</h2>
-<form asp-action="Book" method="post">
-    <input type="hidden" asp-for="PackageID" />
-    <div class="form-group">
-        <label>Customer Name</label>
-        <input type="text" class="form-control" name="customerName" required />
-    </div>
-    <div class="form-group">
-        <label>Customer Email</label>
-        <input type="text" class="form-control" name="customerEmail" required />
-    </div>
-    <div class="form-group">
-        <label>Number of Travelers</label>
-        <input type="text" class="form-control" name="NumberOfTravelers" required />
-    </div>
-    <button type="submit" class="btn btn-primary">Confirm Booking</button>
-   <a class="btn btn-secondary" href="/Travel/Index">Cancel</a>
+@section Styles {
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/travel-packages.css" asp-append-version="true" />
+    <style>
+        /* Booking Form Specific Styles */
+        .booking-container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 2rem 4rem;
+            animation: fadeIn 0.8s ease-out;
+        }
 
-    @* <div>
-        <label asp-for="PackageName"></label>
-        <span>@Model.PackageName</span>
+        .booking-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+        }
+
+        .booking-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple), var(--neon-green));
+        }
+
+        .booking-header {
+            padding: 2.5rem 2.5rem 2rem;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(181, 55, 242, 0.1));
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .booking-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--neon-blue);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .booking-title::before {
+            content: '✈️';
+            font-size: 2.5rem;
+        }
+
+        .booking-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .booking-body {
+            padding: 2.5rem;
+        }
+
+        /* Package Summary */
+        .package-summary {
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .summary-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .summary-title::before {
+            content: '📋';
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .summary-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .summary-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .summary-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Form Styles */
+        .form-section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--neon-purple);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-title::before {
+            content: '👤';
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .form-control:focus {
+            border-color: var(--neon-blue);
+            background: rgba(0, 212, 255, 0.05);
+            box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.1);
+        }
+
+        .form-control::placeholder {
+            color: var(--text-secondary);
+            opacity: 0.5;
+        }
+
+        /* Input Icons */
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            opacity: 0.5;
+        }
+
+        .form-control:focus + .input-icon {
+            opacity: 1;
+            color: var(--neon-blue);
+        }
+
+        /* Form Actions */
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .btn-primary {
+            flex: 2;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            color: var(--text-primary);
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(0, 212, 255, 0.5);
+        }
+
+        .btn-secondary {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--text-secondary);
+            transform: translateY(-2px);
+        }
+
+        /* Alert Message */
+        .alert-message {
+            margin-top: 1.5rem;
+            padding: 1rem 1.5rem;
+            background: rgba(57, 255, 20, 0.1);
+            border: 1px solid rgba(57, 255, 20, 0.3);
+            border-radius: 12px;
+            color: var(--neon-green);
+            font-weight: 500;
+            animation: slideInUp 0.5s ease-out;
+        }
+
+        .alert-message::before {
+            content: '✓ ';
+            font-weight: 700;
+            margin-right: 0.5rem;
+        }
+
+        @@keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @@media (max-width: 768px) {
+            .booking-container {
+                padding: 0 1rem 3rem;
+            }
+
+            .booking-header,
+            .booking-body {
+                padding: 2rem 1.5rem;
+            }
+
+            .booking-title {
+                font-size: 1.6rem;
+            }
+
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-actions {
+                flex-direction: column;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                flex: 1;
+            }
+        }
+
+        @@media (max-width: 480px) {
+            .booking-title {
+                font-size: 1.4rem;
+            }
+
+            .section-title {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+}
+
+<!-- Sticky Navigation -->
+<nav class="sticky-nav" id="navbar">
+    <div class="nav-container">
+        <div class="nav-logo">✈️ TravelHub</div>
+        <ul class="nav-links">
+            <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+            <li><a asp-controller="Travel" asp-action="Index">Packages</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </div>
-    <div>
-        <label asp-for="Destination"></label>
-        <span>@Model.Destination</span>
+</nav>
+
+<!-- Booking Container -->
+<div class="booking-container">
+    <div class="booking-card">
+        <div class="booking-header">
+            <h1 class="booking-title">Book Your Package</h1>
+            <p class="booking-subtitle">Complete the form below to confirm your travel booking</p>
+        </div>
+
+        <div class="booking-body">
+            <!-- Package Summary -->
+            <div class="package-summary">
+                <h3 class="summary-title">Package Details</h3>
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <span class="summary-label">Package Name</span>
+                        <span class="summary-value">@Model.PackageName</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Destination</span>
+                        <span class="summary-value">@Model.Destination</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Duration</span>
+                        <span class="summary-value">@Model.DurationDays Days</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Price</span>
+                        <span class="summary-value" style="color: var(--neon-green);">$@Model.Price.ToString("N2")</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Available Seats</span>
+                        <span class="summary-value" style="color: var(--neon-purple);">@Model.AvailableSeats</span>
+                    </div>
+                    @if (Model.DepartureDate != default(DateTime))
+                    {
+                        <div class="summary-item">
+                            <span class="summary-label">Departure Date</span>
+                            <span class="summary-value">@Model.DepartureDate.ToShortDateString()</span>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <!-- Booking Form -->
+            <form asp-action="Book" method="post">
+                <input type="hidden" asp-for="PackageID" />
+
+                <div class="form-section">
+                    <h3 class="section-title">Traveler Information</h3>
+
+                    <div class="form-group">
+                        <label for="customerName">Full Name</label>
+                        <div class="input-wrapper">
+                            <input type="text" 
+                                   class="form-control" 
+                                   id="customerName"
+                                   name="customerName" 
+                                   placeholder="Enter your full name" 
+                                   required />
+                            <span class="input-icon">👤</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customerEmail">Email Address</label>
+                        <div class="input-wrapper">
+                            <input type="email" 
+                                   class="form-control" 
+                                   id="customerEmail"
+                                   name="customerEmail" 
+                                   placeholder="your.email@example.com" 
+                                   required />
+                            <span class="input-icon">📧</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="NumberOfTravelers">Number of Travelers</label>
+                        <div class="input-wrapper">
+                            <input type="number" 
+                                   class="form-control" 
+                                   id="NumberOfTravelers"
+                                   name="NumberOfTravelers" 
+                                   placeholder="How many travelers?" 
+                                   min="1" 
+                                   max="@Model.AvailableSeats"
+                                   required />
+                            <span class="input-icon">👥</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        <span>Confirm Booking</span>
+                    </button>
+                    <a class="btn btn-secondary" asp-controller="Travel" asp-action="Index">
+                        <span>Cancel</span>
+                    </a>
+                </div>
+            </form>
+
+            @if (ViewBag.Message != null)
+            {
+                <div class="alert-message">
+                    @ViewBag.Message
+                </div>
+            }
+        </div>
     </div>
-    <div>
-        <label asp-for="DurationDays"></label>
-        <span>@Model.DurationDays days</span>
-    </div>
-    <div>
-        <label asp-for="Price"></label>
-        <span>$@Model.Price</span>
-    </div>
-    <div>
-        <label asp-for="DepartureDate"></label>
-        <span>@Model.DepartureDate.ToShortDateString()</span>
-    </div>
-    <div>
-        <label for="numberOfTravelers">Number of Travelers:</label>
-        <input type="number" id="numberOfTravelers" name="numberOfTravelers" min="1" max="@Model.AvailableSeats" required />
-    </div> *@
-</form>
-@if (ViewBag.Message != null)
-{
-    <p>@ViewBag.Message</p>
+</div>
+
+@section Scripts {
+    <script>
+        // Sticky Navigation Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Form Animation on Load
+        document.addEventListener('DOMContentLoaded', function() {
+            const formGroups = document.querySelectorAll('.form-group');
+            formGroups.forEach((group, index) => {
+                group.style.opacity = '0';
+                group.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    group.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+                    group.style.opacity = '1';
+                    group.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+        });
+
+        // Input Focus Effects
+        const inputs = document.querySelectorAll('.form-control');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'translateY(-2px)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Real-time validation for number of travelers
+        const travelersInput = document.getElementById('NumberOfTravelers');
+        if (travelersInput) {
+            travelersInput.addEventListener('input', function() {
+                const max = parseInt(this.max);
+                const value = parseInt(this.value);
+                
+                if (value > max) {
+                    this.value = max;
+                    this.style.borderColor = 'var(--neon-green)';
+                    setTimeout(() => {
+                        this.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                    }, 1000);
+                }
+            });
+        }
+    </script>
 }

@@ -1,18 +1,411 @@
 ﻿@{
-    ViewBag.Title="Package Details";
+    ViewBag.Title = "Package Details";
     var package = ViewBag.Package as TravelBookingSystem.Models.TravelPackage;
 }
 
-@if(package==null)
-{
-    <p>Package not found.</p>
-}
-<h2>@package.PackageName</h2>
-<p><strong>Destination:</strong> @package.Destination</p>
-<p><strong>Duration:</strong> @package.DurationDays days</p>
-<p><strong>Price:</strong> $@package.Price</p>
-<p><strong>Available Seats:</strong> @package.AvailableSeats</p>
-<p><strong>DepartureDate:</strong> @package.DepartureDate</p>
+@section Styles {
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/travel-packages.css" asp-append-version="true" />
+    <style>
+        /* Details Page Specific Styles */
+        .details-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 2rem 4rem;
+            animation: fadeIn 0.8s ease-out;
+        }
 
-@* Url.Action(ActionName, ControllerName, RouteValues) *@
-<a href="/Travel/Book/@package.PackageID">Book Now</a>
+        .details-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+        }
+
+        .details-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple), var(--neon-green));
+        }
+
+        /* Header */
+        .details-header {
+            padding: 3rem 2.5rem 2rem;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(181, 55, 242, 0.15));
+            text-align: center;
+        }
+
+        .package-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @@keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .details-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .package-tagline {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        /* Details Body */
+        .details-body {
+            padding: 2.5rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--neon-blue), var(--neon-purple));
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .info-card:hover {
+            background: rgba(0, 212, 255, 0.05);
+            border-color: rgba(0, 212, 255, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .info-card:hover::before {
+            opacity: 1;
+        }
+
+        .info-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .info-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .info-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .price-card .info-value {
+            color: var(--neon-green);
+            font-size: 2rem;
+        }
+
+        .seats-card .info-value {
+            color: var(--neon-purple);
+            background: rgba(181, 55, 242, 0.2);
+            padding: 0.3rem 1rem;
+            border-radius: 25px;
+            display: inline-block;
+        }
+
+        /* Featured Info */
+        .featured-info {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(181, 55, 242, 0.1));
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .featured-info .info-icon {
+            font-size: 3rem;
+            display: inline-block;
+            margin-right: 1rem;
+            vertical-align: middle;
+        }
+
+        .featured-info .info-label {
+            display: inline-block;
+            margin: 0;
+            vertical-align: middle;
+        }
+
+        .featured-info .info-value {
+            font-size: 1.8rem;
+            margin-left: 3.5rem;
+            color: var(--neon-blue);
+        }
+
+        /* Action Footer */
+        .details-footer {
+            padding: 2rem 2.5rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-book-now {
+            flex: 2;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            color: var(--text-primary);
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+            font-size: 1.1rem;
+        }
+
+        .btn-book-now:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(0, 212, 255, 0.5);
+        }
+
+        .btn-back-packages {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-back-packages:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--text-secondary);
+            transform: translateY(-2px);
+        }
+
+        /* Error State */
+        .error-state {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .error-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+
+        .error-message {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        /* Responsive */
+        @@media (max-width: 768px) {
+            .details-container {
+                padding: 0 1rem 3rem;
+            }
+
+            .details-header,
+            .details-body {
+                padding: 2rem 1.5rem;
+            }
+
+            .details-title {
+                font-size: 2rem;
+            }
+
+            .package-icon {
+                font-size: 3rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .details-footer {
+                flex-direction: column;
+                padding: 1.5rem;
+            }
+
+            .btn-book-now,
+            .btn-back-packages {
+                flex: 1;
+            }
+        }
+    </style>
+}
+
+<!-- Sticky Navigation -->
+<nav class="sticky-nav" id="navbar">
+    <div class="nav-container">
+        <div class="nav-logo">✈️ TravelHub</div>
+        <ul class="nav-links">
+            <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+            <li><a asp-controller="Travel" asp-action="Index">Packages</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Details Container -->
+<div class="details-container">
+    @if (package == null)
+    {
+        <div class="details-card">
+            <div class="error-state">
+                <div class="error-icon">⚠️</div>
+                <p class="error-message">Package not found.</p>
+                <a class="btn btn-back-packages" asp-controller="Travel" asp-action="Index">
+                    <span>← Back to Packages</span>
+                </a>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="details-card">
+            <!-- Header -->
+            <div class="details-header">
+                <div class="package-icon">✈️</div>
+                <h1 class="details-title">@package.PackageName</h1>
+                <p class="package-tagline">Explore the beauty of @package.Destination</p>
+            </div>
+
+            <!-- Body -->
+            <div class="details-body">
+                <!-- Info Grid -->
+                <div class="info-grid">
+                    <div class="info-card">
+                        <span class="info-icon">📍</span>
+                        <span class="info-label">Destination</span>
+                        <div class="info-value">@package.Destination</div>
+                    </div>
+
+                    <div class="info-card">
+                        <span class="info-icon">⏱️</span>
+                        <span class="info-label">Duration</span>
+                        <div class="info-value">@package.DurationDays Days</div>
+                    </div>
+
+                    <div class="info-card price-card">
+                        <span class="info-icon">💰</span>
+                        <span class="info-label">Price Per Person</span>
+                        <div class="info-value">$@package.Price.ToString("N2")</div>
+                    </div>
+
+                    <div class="info-card seats-card">
+                        <span class="info-icon">👥</span>
+                        <span class="info-label">Available Seats</span>
+                        <div class="info-value">@package.AvailableSeats</div>
+                    </div>
+                </div>
+
+                <!-- Featured Departure Date -->
+                <div class="featured-info">
+                    <span class="info-icon">📅</span>
+                    <span class="info-label">Departure Date</span>
+                    <div class="info-value">@package.DepartureDate.ToString("MMMM dd, yyyy")</div>
+                </div>
+
+                <!-- Additional Information -->
+                <div style="background: rgba(181, 55, 242, 0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(181, 55, 242, 0.1);">
+                    <p style="margin: 0; color: var(--text-secondary); line-height: 1.6;">
+                        <strong style="color: var(--neon-purple);">🎯 Why Choose This Package?</strong><br>
+                        Experience the ultimate adventure with our carefully curated @package.PackageName. 
+                        Enjoy @package.DurationDays days of unforgettable memories in @package.Destination 
+                        with all-inclusive amenities and professional tour guides.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Footer Actions -->
+            <div class="details-footer">
+                <a class="btn btn-book-now" asp-controller="Travel" asp-action="Book" asp-route-id="@package.PackageID">
+                    <span>🎫 Book Now</span>
+                </a>
+                <a class="btn btn-back-packages" asp-controller="Travel" asp-action="Index">
+                    <span>← Back to Packages</span>
+                </a>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        // Sticky Navigation Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Animate info cards on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const infoCards = document.querySelectorAll('.info-card');
+            infoCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+
+            // Animate featured info
+            const featuredInfo = document.querySelector('.featured-info');
+            if (featuredInfo) {
+                featuredInfo.style.opacity = '0';
+                featuredInfo.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    featuredInfo.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                    featuredInfo.style.opacity = '1';
+                    featuredInfo.style.transform = 'translateY(0)';
+                }, 500);
+            }
+        });
+    </script>
+}
