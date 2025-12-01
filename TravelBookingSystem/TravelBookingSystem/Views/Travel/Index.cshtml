@@ -1,5 +1,33 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<TravelPackage>
 @{
+    ViewBag.Title = "Travel Packages";
 }
+<h2>Available Travel Packages</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Package Name</th>
+            <th>Destination</th>
+            <th>Duration</th>
+            <th>Price</th>
+            <th>Available Seats</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var package in Model)
+        {
+            <tr>
+                <td>@package.PackageName</td>
+                <td>@package.Destination</td>
+                <td>@package.DurationDays</td>
+                <td>@package.Price</td>
+                <td>@package.AvailableSeats</td>
+                <td>
+                    <a class="btn btn-primary" href="/Travel/Book/@package.PackageID">Book Now</a>
+                    <a class="btn btn-primary" href="/Travel/Details/@package.PackageID">View Details</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

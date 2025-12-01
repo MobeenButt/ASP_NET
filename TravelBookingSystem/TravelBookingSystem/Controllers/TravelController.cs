@@ -7,10 +7,18 @@ namespace TravelBookingSystem.Controllers
     public class TravelController : Controller
     {
         public readonly ITravelService service;
+        public TravelController (ITravelService service)
+        {
+            this.service = service;
+        }
         [HttpGet]
         public IActionResult Index()
         {
             var packages = service.GetAllPackages();
+            if(packages == null || packages.Count == 0)
+            {
+                ViewBag.Message = "No travel packages available at the moment.";
+            }
             return View(packages);
         }
         [HttpGet]

@@ -1,5 +1,49 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@model TravelPackage
+
+<h2>Book @Model.PackageName</h2>
+<form asp-action="Book" method="post">
+    <input type="hidden" asp-for="PackageID" />
+    <div class="form-group">
+        <label>Customer Name</label>
+        <input type="text" class="form-control" name="customerName" required />
+    </div>
+    <div class="form-group">
+        <label>Customer Email</label>
+        <input type="text" class="form-control" name="customerEmail" required />
+    </div>
+    <div class="form-group">
+        <label>Number of Travelers</label>
+        <input type="text" class="form-control" name="NumberOfTravelers" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Confirm Booking</button>
+   <a class="btn btn-secondary" href="/Travel/Index">Cancel</a>
+
+    @* <div>
+        <label asp-for="PackageName"></label>
+        <span>@Model.PackageName</span>
+    </div>
+    <div>
+        <label asp-for="Destination"></label>
+        <span>@Model.Destination</span>
+    </div>
+    <div>
+        <label asp-for="DurationDays"></label>
+        <span>@Model.DurationDays days</span>
+    </div>
+    <div>
+        <label asp-for="Price"></label>
+        <span>$@Model.Price</span>
+    </div>
+    <div>
+        <label asp-for="DepartureDate"></label>
+        <span>@Model.DepartureDate.ToShortDateString()</span>
+    </div>
+    <div>
+        <label for="numberOfTravelers">Number of Travelers:</label>
+        <input type="number" id="numberOfTravelers" name="numberOfTravelers" min="1" max="@Model.AvailableSeats" required />
+    </div> *@
+</form>
+@if (ViewBag.Message != null)
+{
+    <p>@ViewBag.Message</p>
 }

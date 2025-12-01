@@ -1,5 +1,21 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewBag.Title = "Booking Successful";
+    var booking = ViewBag.Booking as TravelBookingSystem.Models.Booking;
 }
+<h2>Booking SuccessFul</h2>
+@if(booking!=null)
+{
+    <p>Thank you, @booking.CustomerName, for booking with us!</p>
+    @* <p>Your booking ID is: @booking.BookingID</p> *@
+    <p><strong>Booking ID:</strong> @(booking.BookingID > 0 ? booking.BookingID.ToString() : "Pending")</p>
+    <p>Package ID: @booking.PackageID</p>
+    <p>Number of Travelers: @booking.NumberOfTravelers</p>
+    <p>Booking Date: @booking.BookingDate.ToShortDateString()</p>
+}
+else
+{
+    <p>Booking details not available.</p>
+
+}
+
+<a class="btn btn-primary" href="/Travel/Index">Back</a>

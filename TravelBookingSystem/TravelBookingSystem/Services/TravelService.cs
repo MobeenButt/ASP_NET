@@ -87,7 +87,7 @@ namespace TravelBookingSystem.Services
             }
             if(package.AvailableSeats<booking.NumberOfTravelers)
             {
-                return false;
+               throw new ArgumentException("Not enough available seats for the selected package.");
             }
             //Insert booking
            

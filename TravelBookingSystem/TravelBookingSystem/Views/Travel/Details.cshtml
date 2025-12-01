@@ -1,5 +1,18 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewBag.Title="Package Details";
+    var package = ViewBag.Package as TravelBookingSystem.Models.TravelPackage;
 }
+
+@if(package==null)
+{
+    <p>Package not found.</p>
+}
+<h2>@package.PackageName</h2>
+<p><strong>Destination:</strong> @package.Destination</p>
+<p><strong>Duration:</strong> @package.DurationDays days</p>
+<p><strong>Price:</strong> $@package.Price</p>
+<p><strong>Available Seats:</strong> @package.AvailableSeats</p>
+<p><strong>DepartureDate:</strong> @package.DepartureDate</p>
+
+@* Url.Action(ActionName, ControllerName, RouteValues) *@
+<a href="/Travel/Book/@package.PackageID">Book Now</a>
