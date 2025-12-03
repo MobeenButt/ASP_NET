@@ -4,6 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 // Add distributed memory cache service
 builder.Services.AddDistributedMemoryCache();
+//adding session service with 10 minutes timeout
 builder.Services.AddSession(
    o=>o.IdleTimeout=TimeSpan.FromMinutes(10)
     );
