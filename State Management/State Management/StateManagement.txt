@@ -1,0 +1,4 @@
+﻿HTTP is a stateless protocol, meaning that each request from a client to a server is treated as an independent transaction that is unrelated to any previous request. To manage state in web applications, developers use various techniques, including:
+1. Cookies: Small pieces of data stored on the client's browser that can be sent back to the server with each request. Cookies are commonly used for session management, user preferences, and tracking.
+2. Sessions: Server-side storage of user data that is maintained across multiple requests. Sessions typically use a unique identifier (session ID) stored in a cookie to associate the client with their session data on the server.
+3. URL Parameters: Data appended to the URL in the form of query strings. This method is often used for passing state information between pages, such as search filters or pagination.
