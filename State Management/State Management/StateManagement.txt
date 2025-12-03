@@ -13,3 +13,12 @@ State Management Techniques:
 5.Hidden Fields
 6.HttpContextItems
 7.Cache
+
+Cookies: 
+1.Cookies are small pieces of data stored on the client-side (browser) that can be sent to the server with each request.
+
+The Browser requests a web page from the server.
+The server processes the request and sends back the web page along with a Set-Cookie header.
+The browser stores the cookie and sends it back to the server with subsequent requests to the same domain.
+
+Cookies store on the client side (computer hard drive)
