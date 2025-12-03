@@ -2,7 +2,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+// Add distributed memory cache service
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(
+   o=>o.IdleTimeout=TimeSpan.FromMinutes(10)
+    );
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -13,6 +17,9 @@ if (!app.Environment.IsDevelopment())
 app.UseRouting();
 
 app.UseAuthorization();
+
+// Enable session middleware
+app.UseSession();
 
 app.MapStaticAssets();
 

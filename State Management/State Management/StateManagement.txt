@@ -22,3 +22,10 @@ The server processes the request and sends back the web page along with a Set-Co
 The browser stores the cookie and sends it back to the server with subsequent requests to the same domain.
 
 Cookies store on the client side (computer hard drive)
+
+
+By Default Asp.net dont have sessions
+
+
+COOKIES STORES ON CLIENT SIDE (BROWSER)
+SESSION STORES ON SERVER SIDE
