@@ -11,6 +11,11 @@ namespace Mini_Shopping_Website.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            return View("Login");
+        }
+        [HttpGet]
+        public IActionResult Login()
+        {
             return View();
         }
         [HttpPost]
@@ -20,7 +25,8 @@ namespace Mini_Shopping_Website.Controllers
             {
                 HttpContext.Session.SetString("Email", model.Email);
                 HttpContext.Session.SetString("Password", model.Password);
-                return View("Home");
+                
+                return RedirectToAction("Home");
             }
             return View(model);
         }
@@ -36,7 +42,7 @@ namespace Mini_Shopping_Website.Controllers
             var email = HttpContext.Session.GetString("Email");
             if(email==null)
             {
-                return View("Login");
+                return RedirectToAction("Login");
             }
             return View();
         }

@@ -1,0 +1,17 @@
+﻿@{
+        var email = Context.Session.GetString("Email");
+}
+@if(email==null)
+{
+    <h3>Session Expired Please Login Again</h3>
+}
+else
+{
+    <h3>Welcome @email</h3>
+
+    <form method="post" action="/Account/Logout">
+        <button type="submit" class="btn btn-primary">Logout</button>
+
+    </form>
+    <a href="/Shop/ProductList">Go to Products</a>    
+}
