@@ -1,7 +1,11 @@
-﻿namespace Travel_Booking_System_with_identity_.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Travel_Booking_System_with_identity_.Models
 {
     public class TravelPackage
     {
+        // including Key attribute to explicitly mark PackageID as primary key
+        [Key] 
         public int PackageID { get; set; }
         public string PackageName { get; set; }
         public string Destination { get; set; }
