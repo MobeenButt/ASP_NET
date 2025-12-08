@@ -6,9 +6,9 @@ namespace Travel_Booking_System_with_identity_.Models
     {
         public int BookingID { get; set; }
         public int PackageID { get; set; }
-        public TravelPackage Package { get; set; }
+        public TravelPackage? Package { get; set; }
         public string CustomerId { get; set; }
-        public ApplicationUser Customer { get; set; }
+        public ApplicationUser? Customer { get; set; }
         public string CustomerName { get; set; }
         public string CustomerEmail { get; set; }
         public int NumberOfTravelers { get; set; }

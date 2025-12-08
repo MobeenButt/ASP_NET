@@ -8,7 +8,7 @@ namespace Travel_Booking_System_with_identity_.Seed
     {
         private readonly IServiceProvider provider;
         private readonly IConfiguration config;
-        public DbInitializer(IServiceProvider provider,IConfiguration config)
+        public DbInitializer(IServiceProvider provider, IConfiguration config)
         {
             this.provider = provider;
             this.config = config;
@@ -20,25 +20,25 @@ namespace Travel_Booking_System_with_identity_.Seed
             var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
             var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             //ensuring  db configuration
-              await context.Database.MigrateAsync();
+            await context.Database.MigrateAsync();
 
             var roles = new[] { "Admin", "User" };
-            foreach(var role in roles)
+            foreach (var role in roles)
             {
-                if(!await roleManager.RoleExistsAsync(role))
+                if (!await roleManager.RoleExistsAsync(role))
                 {
                     await roleManager.CreateAsync(new IdentityRole(role));
                 }
             }
 
             //default admin credentials
-            var adminEmail = config["SeedAdmin:Email"]??"admin@gmail.com";
+            var adminEmail = config["SeedAdmin:Email"] ?? "admin@gmail.com";
             var adminPassword = config["SeedAdmin:Password"] ?? "Admin@123";
-            if(await userManager.FindByEmailAsync(adminEmail)==null)
+            if (await userManager.FindByEmailAsync(adminEmail) == null)
             {
                 var admin = new ApplicationUser { UserName = "admin", Email = adminEmail, EmailConfirmed = true };
                 var result = await userManager.CreateAsync(admin, adminPassword);
-                if(result.Succeeded)
+                if (result.Succeeded)
                 {
                     await userManager.AddToRoleAsync(admin, "Admin");
                 }

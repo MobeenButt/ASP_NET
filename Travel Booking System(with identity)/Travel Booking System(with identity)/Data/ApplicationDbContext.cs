@@ -7,6 +7,12 @@ namespace Travel_Booking_System_with_identity_.Data
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):base(options) { }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            //optionsBuilder.ConfigureWarnings(warnings =>
+            //    warnings.Ignore(Microsoft.EntityFrameworkCore.Diagnostics.RelationalEventId.PendingModelChangesWarning));
+        }
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<TravelPackage> TravelPackages { get; set; }
 

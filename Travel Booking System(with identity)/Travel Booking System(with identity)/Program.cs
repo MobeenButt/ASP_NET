@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Travel_Booking_System_with_identity_.Data;
 using Travel_Booking_System_with_identity_.Models;
+using Travel_Booking_System_with_identity_.Seed;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,19 +11,37 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-builder.Services.AddIdentity<ApplicationUser,IdentityRole>(options=>
-{
-    options.Password.RequiredLength = 6;
-    options.Password.RequireNonAlphanumeric = false;
-    options.Password.RequireUppercase = false;
-}).AddEntityFrameworkStores<ApplicationDbContext>()
-  .AddDefaultTokenProviders();
+builder.Services.AddDefaultIdentity<IdentityUser>(options=> options.SignIn.RequireConfirmedAccount = false)
+    .AddEntityFrameworkStores<ApplicationDbContext>();
 
-//builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-//    .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
-builder.Services.AddRazorPages();
+builder.Services.AddAuthorization(options=>
+{
+    //Admin Policy
+    options.AddPolicy("RequireAdminRole",policy=>policy.RequireRole("Admin"));
+    //User Policy
+    options.AddPolicy("RequireUserRole", policy => policy.RequireRole("User"));
+
+    //Admin or User Policy
+    options.AddPolicy("RequireAdminUserRole", policy => policy.RequireRole("Admin","User"));
+
+
+});
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.AccessDeniedPath = "/Home/AccessDenied"; 
+    options.LoginPath = "/Identity/Account/Login";
+});
+
 var app = builder.Build();
+
+// Initialize database with roles and admin user
+using (var scope = app.Services.CreateScope())
+{
+    var initializer = scope.ServiceProvider.GetRequiredService<IDbIntializer>();
+    await initializer.InitializeAsync();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -33,6 +52,8 @@ else
 {
     app.UseExceptionHandler("/Home/Error");
 }
+
+app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthentication();

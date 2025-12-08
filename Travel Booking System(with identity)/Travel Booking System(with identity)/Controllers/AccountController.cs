@@ -55,7 +55,8 @@ namespace Travel_Booking_System_with_identity_.Controllers
             {
                 return View(model);
             }
-            var result = await signManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+            //var result = await signManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false); 
+            var result = await signManager.PasswordSignInAsync(model.Email, model.Password,model.RememberMe,false);
             if (!result.Succeeded)
             {
                 ModelState.AddModelError("", "Invalid Login");

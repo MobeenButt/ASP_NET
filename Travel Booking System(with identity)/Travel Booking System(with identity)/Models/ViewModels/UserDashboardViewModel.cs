@@ -2,7 +2,7 @@
 {
     public class UserDashboardViewModel
     {
-        public List<TravelPackage> Packages { get; set; }
-        public List<Booking> Bookings { get; set; }
+        public List<TravelPackage> Packages { get; set; } = new();
+        public List<Booking> Bookings { get; set; } = new();
     }
 }
