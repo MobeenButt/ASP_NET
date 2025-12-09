@@ -1,0 +1,446 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section Styles {
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/travel-packages.css" asp-append-version="true" />
+    <style>
+        /* Hero Section */
+        .hero-section {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .hero-section::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
+                animation: pulse 8s ease-in-out infinite;
+            }
+
+        @@keyframes pulse {
+            0%, 100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero-icon {
+            font-size: 6rem;
+            margin-bottom: 2rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple), var(--neon-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        .btn-hero {
+            padding: 1.2rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .btn-hero::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 0;
+                height: 0;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.2);
+                transform: translate(-50%, -50%);
+                transition: width 0.6s, height 0.6s;
+            }
+
+            .btn-hero:hover::before {
+                width: 400px;
+                height: 400px;
+            }
+
+            .btn-hero span {
+                position: relative;
+                z-index: 1;
+            }
+
+        .btn-primary-hero {
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            color: var(--text-primary);
+            box-shadow: 0 6px 30px rgba(0, 212, 255, 0.4);
+        }
+
+            .btn-primary-hero:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 40px rgba(0, 212, 255, 0.6);
+            }
+
+        .btn-secondary-hero {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            border: 2px solid var(--neon-blue);
+        }
+
+            .btn-secondary-hero:hover {
+                background: rgba(0, 212, 255, 0.1);
+                transform: translateY(-3px);
+                border-color: var(--neon-purple);
+            }
+
+        /* Features Section */
+        .features-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 4rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .feature-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 4px;
+                height: 100%;
+                background: linear-gradient(180deg, var(--neon-blue), var(--neon-purple));
+                opacity: 0;
+                transition: var(--transition);
+            }
+
+            .feature-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3);
+                border-color: rgba(0, 212, 255, 0.3);
+            }
+
+                .feature-card:hover::before {
+                    opacity: 1;
+                }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--neon-blue);
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(181, 55, 242, 0.05));
+            border-radius: 30px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            position: relative;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive */
+        @@media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-icon {
+                font-size: 4rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+    </style>
+}
+
+<!-- Sticky Navigation -->
+<nav class="sticky-nav" id="navbar">
+    <div class="nav-container">
+        <div class="nav-logo">✈️ TravelHub</div>
+        <ul class="nav-links">
+            <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+            <li><a asp-controller="Travel" asp-action="Index">Packages</a></li>
+            <li><a asp-controller="Home" asp-action="About">About</a></li>
+            <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-content">
+        <div class="hero-icon">🌍</div>
+        <h1 class="hero-title">Welcome to TravelHub</h1>
+        <p class="hero-subtitle">
+            Discover amazing destinations and create unforgettable memories.
+            Your next adventure starts here with our carefully curated travel packages.
+        </p>
+        <div class="hero-buttons">
+            <a class="btn-hero btn-primary-hero" asp-controller="Travel" asp-action="Index">
+                <span>🎫 Explore Packages</span>
+            </a>
+            <a class="btn-hero btn-secondary-hero" href="/Home/About">
+                <span>📖 Learn More</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section">
+    <h2 class="section-title">Why Choose TravelHub?</h2>
+    <p class="section-subtitle">Experience travel planning made simple and exciting</p>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <span class="feature-icon">🏖️</span>
+            <h3 class="feature-title">Curated Destinations</h3>
+            <p class="feature-description">
+                Handpicked travel packages to the world's most beautiful and exciting destinations.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <span class="feature-icon">💰</span>
+            <h3 class="feature-title">Best Price Guarantee</h3>
+            <p class="feature-description">
+                Competitive pricing with no hidden fees. Get the best value for your money.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <span class="feature-icon">🛡️</span>
+            <h3 class="feature-title">Secure Booking</h3>
+            <p class="feature-description">
+                Safe and secure online booking process with instant confirmation.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <span class="feature-icon">⭐</span>
+            <h3 class="feature-title">Premium Service</h3>
+            <p class="feature-description">
+                24/7 customer support and dedicated travel advisors for your journey.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <span class="feature-icon">🎒</span>
+            <h3 class="feature-title">Flexible Packages</h3>
+            <p class="feature-description">
+                Customize your trip according to your preferences and travel style.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <span class="feature-icon">📱</span>
+            <h3 class="feature-title">Easy Management</h3>
+            <p class="feature-description">
+                Manage your bookings effortlessly with our user-friendly platform.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="features-section">
+    <div class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Destinations</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">50K+</div>
+                <div class="stat-label">Happy Travelers</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">Travel Packages</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4.9★</div>
+                <div class="stat-label">Average Rating</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        // Sticky Navigation
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Animate on scroll
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(card);
+        });
+
+        // Animate stats on scroll
+        document.querySelectorAll('.stat-item').forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'scale(0.8)';
+            item.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(item);
+        });
+    </script>
+}

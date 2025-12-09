@@ -1,0 +1,77 @@
+﻿@model List<TravelPackage>
+@{
+    ViewBag.Title = "Travel Packages";
+}
+
+@section Styles {
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/travel-packages.css" asp-append-version="true" />
+}
+
+<!-- Sticky Navigation -->
+<nav class="sticky-nav" id="navbar">
+    <div class="nav-container">
+        <div class="nav-logo">✈️ TravelHub</div>
+        <ul class="nav-links">
+            <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+            <li><a asp-controller="Travel" asp-action="Index">Packages</a></li>
+            <li><a asp-controller="Home" asp-action="About">About</a></li>
+            <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Header Section -->
+<section class="header-section">
+    <h1>Available Travel Packages</h1>
+    <p>Discover your next adventure with our carefully curated travel packages. Explore the world with comfort and style.</p>
+</section>
+
+<!-- Packages Container -->
+<div class="packages-container" id="packages">
+    @if (Model != null && Model.Any())
+    {
+        foreach (var package in Model)
+        {
+            <article class="package-card" data-package-id="@package.PackageID">
+                <div class="card-header">
+                    <h3 class="package-name">@package.PackageName</h3>
+                    <div class="package-destination">@package.Destination</div>
+                </div>
+                <div class="card-body">
+                    <div class="package-info">
+                        <div class="info-item">
+                            <span class="info-label">Duration</span>
+                            <span class="info-value">@package.DurationDays Days</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Price</span>
+                            <span class="info-value price-value">$@package.Price.ToString("N2")</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Available Seats</span>
+                            <span class="info-value seats-value">@package.AvailableSeats</span>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <a class="btn btn-book" asp-controller="Travel" asp-action="Book" asp-route-id="@package.PackageID">
+                            <span>Book Now</span>
+                        </a>
+                        <a class="btn btn-details" asp-controller="Travel" asp-action="Details" asp-route-id="@package.PackageID">
+                            <span>View Details</span>
+                        </a>
+                    </div>
+                </div>
+            </article>
+        }
+    }
+    else
+    {
+        <div class="no-packages">
+            <p>No travel packages available at the moment. Please check back later!</p>
+        </div>
+    }
+</div>
+

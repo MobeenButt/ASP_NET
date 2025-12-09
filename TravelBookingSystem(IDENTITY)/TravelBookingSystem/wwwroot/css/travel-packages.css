@@ -1,0 +1,426 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-bg: #0a0e27;
+    --secondary-bg: #1a1f3a;
+    --card-bg: #1e2347;
+    --neon-blue: #00d4ff;
+    --neon-purple: #b537f2;
+    --neon-green: #39ff14;
+    --text-primary: #ffffff;
+    --text-secondary: #a8b2d1;
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+    color: var(--text-primary);
+    min-height: 100vh;
+    scroll-behavior: smooth;
+}
+
+/* Sticky Navigation */
+.sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(26, 31, 58, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    transition: var(--transition);
+}
+
+.sticky-nav.scrolled {
+    padding: 0.5rem 0;
+    box-shadow: 0 6px 30px rgba(0, 212, 255, 0.2);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--neon-blue);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Header Section */
+.header-section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 4rem 2rem 2rem;
+    text-align: center;
+}
+
+.header-section h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.header-section p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    animation: fadeInUp 0.8s ease-out 0.2s backwards;
+}
+
+/* Cards Container */
+.packages-container {
+    max-width: 1400px;
+    margin: 3rem auto;
+    padding: 0 2rem 4rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    animation: fadeIn 1s ease-out 0.4s backwards;
+}
+
+/* Card Design */
+.package-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.package-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple), var(--neon-green));
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.package-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3);
+    border-color: rgba(0, 212, 255, 0.3);
+}
+
+.package-card:hover::before {
+    opacity: 1;
+}
+
+.card-header {
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(181, 55, 242, 0.1));
+}
+
+.package-name {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--neon-blue);
+}
+
+.package-destination {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.package-destination::before {
+    content: '📍';
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.package-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.info-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.info-value {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.price-value {
+    color: var(--neon-green);
+}
+
+.seats-value {
+    color: var(--neon-purple);
+}
+
+/* Buttons */
+.card-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn {
+    flex: 1;
+    padding: 0.9rem 1.5rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    display: inline-block;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn span {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-book {
+    background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+    color: var(--text-primary);
+    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+}
+
+.btn-book:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 25px rgba(0, 212, 255, 0.5);
+}
+
+.btn-details {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    border: 2px solid var(--neon-blue);
+}
+
+.btn-details:hover {
+    background: rgba(0, 212, 255, 0.1);
+    transform: scale(1.05);
+    border-color: var(--neon-purple);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Loading Skeleton for Lazy Loading */
+.skeleton {
+    background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s ease-in-out infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .header-section h1 {
+        font-size: 3rem;
+    }
+
+    .packages-container {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-logo {
+        font-size: 1.5rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .header-section {
+        padding: 3rem 1.5rem 1.5rem;
+    }
+
+    .header-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .header-section p {
+        font-size: 1rem;
+    }
+
+    .packages-container {
+        grid-template-columns: 1fr;
+        padding: 0 1.5rem 3rem;
+        gap: 1.5rem;
+    }
+
+    .card-actions {
+        flex-direction: column;
+    }
+
+    .package-info {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-section h1 {
+        font-size: 2rem;
+    }
+
+    .nav-links {
+        font-size: 0.9rem;
+    }
+
+    .package-name {
+        font-size: 1.5rem;
+    }
+
+    .btn {
+        padding: 0.8rem 1rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* No packages message */
+.no-packages {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
