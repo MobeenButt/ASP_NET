@@ -39,9 +39,40 @@ var app = builder.Build();
 // Initialize database with roles and admin user
 using (var scope = app.Services.CreateScope())
 {
-    var initializer = scope.ServiceProvider.GetRequiredService<IDbIntializer>();
-    await initializer.InitializeAsync();
-}
+    var services = scope.ServiceProvider;
+    var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
+    var admin = await userManager.FindByEmailAsync("admin@example.com");
+    if (admin == null)
+    {
+        admin = new IdentityUser
+        {
+            UserName = "admin@example.com",
+            Email = "admin@example.com",
+            EmailConfirmed = true
+        };
+        var result = await userManager.CreateAsync(admin, "Admin@123");
+        if (result.Succeeded)
+        {
+            await userManager.AddToRoleAsync(admin, "Admin");
+        }
+    }
+
+    var employee = await userManager.FindByEmailAsync("employee@example.com");
+    if (employee == null)
+    {
+        employee = new IdentityUser
+        {
+            UserName = "employee@example.com",
+            Email = "employee@example.com",
+            EmailConfirmed = true
+        };
+        var result = await userManager.CreateAsync(employee, "Employee@123");
+        if (result.Succeeded)
+        {
+            await userManager.AddToRoleAsync(employee, "User");
+        }
+    }
+}   
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -51,9 +82,10 @@ if (app.Environment.IsDevelopment())
 else
 {
     app.UseExceptionHandler("/Home/Error");
+    app.UseHsts();
 }
 
-app.UseStaticFiles();
+app.UseHttpsRedirection();
 app.UseRouting();
 
 app.UseAuthentication();
@@ -63,7 +95,7 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Account}/{action=Login}/{id?}")
+    pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
 app.MapRazorPages()
