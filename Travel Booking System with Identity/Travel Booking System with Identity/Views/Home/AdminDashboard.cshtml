@@ -1,0 +1,30 @@
+﻿@model List<Travel_Booking_System_with_Identity.Models.Booking>
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+<h2>Admin Dashboard — All Bookings</h2>
+
+<table border="1">
+    <tr><th>Id</th><th>Package</th><th>User</th><th>Travellers</th><th>Total</th><th>Status</th><th>Actions</th></tr>
+    @foreach (var b in Model)
+    {
+        <tr>
+            <td>@b.BookingId</td>
+            <td>@b.Package?.PackageName</td>
+            <td>@b.CustomerEmail?</td>
+            <td>@b.NumberOfTravelers</td>
+            <td>@b.TotalAmount.ToString("C")</td>
+            <td>@b.BookingStatus</td>
+            <td>
+                <form method="post" asp-action="ChangeStatus">
+                    <input type="hidden" name="bookingId" value="@b.BookingId" />
+                    <button name="status" value="Approved" type="submit">Approve</button>
+                    <button name="status" value="Rejected" type="submit">Reject</button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+<form method="post" asp-controller="Account" asp-action="Logout">
+    <button type="submit">Logout</button>
+</form>

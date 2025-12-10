@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Travel_Booking_System_with_Identity.Models;
 using Microsoft.AspNetCore.Identity;
 namespace Travel_Booking_System_with_Identity.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<IdentityUser> userManager;
-        private readonly SignInManager<IdentityUser> signInManager;
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        private readonly UserManager<ApplicationUser> userManager;
+        private readonly SignInManager<ApplicationUser> signInManager;
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
@@ -20,12 +21,17 @@ namespace Travel_Booking_System_with_Identity.Controllers
         public async Task<IActionResult> Login(string email, string password)
         {
             var result = await signInManager.PasswordSignInAsync(email, password, false, false);
-            if (result.Succeeded)
+           if(!result.Succeeded)
             {
-                return RedirectToAction("Index", "Home");
+                ModelState.AddModelError("", "Invalid login attempt.");
+                return View();
             }
-            ModelState.AddModelError("", "Invalid login attempt.");
-            return View();
+           var user = await userManager.FindByEmailAsync(email);
+            if(user!=null && await userManager.IsInRoleAsync(user, "Admin"))
+            {
+                return RedirectToAction("AdminDashboard", "Home");
+            }
+            return RedirectToAction("UserDashboard", "Home");
         }
         [HttpGet]
         public IActionResult Register()
@@ -35,12 +41,13 @@ namespace Travel_Booking_System_with_Identity.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(string email, string password)
         {
-            var user = new IdentityUser { UserName = email, Email = email };
+            var user = new ApplicationUser  { UserName = email, Email = email };
             var result = await userManager.CreateAsync(user, password);
             if (result.Succeeded)
             {
-                await _signInManager.SignInAsync(user, isPersistent: false);
-                return RedirectToAction("Index", "Home");
+                await userManager.AddToRoleAsync(user, "User");//default role
+                await signInManager.SignInAsync(user, isPersistent: false);
+                return RedirectToAction("UserDashboard", "Home");
             }
             foreach (var error in result.Errors)
             {
@@ -51,8 +58,9 @@ namespace Travel_Booking_System_with_Identity.Controllers
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
-            await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            await signInManager.SignOutAsync();
+            return RedirectToAction("Login" +
+                "");
         }
     }
 }

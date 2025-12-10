@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Travel_Booking_System_with_Identity.Data;
+using Travel_Booking_System_with_Identity.Models;
 using Travel_Booking_System_with_Identity.Seed;
+using Travel_Booking_System_with_Identity.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,9 +14,13 @@ builder.Services.AddDbContext<ApplicationDbContext>(options=>
     );
 
 //Add Identity
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
+
+//Register Services
+builder.Services.AddScoped<ITravelService, TravelService>();
+
 
 //Add MVC
 builder.Services.AddControllersWithViews();
@@ -30,7 +36,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name:"default",
-    pattern: "{controller=Account}/{action=Login}/{id?}"
+    pattern: "{controller=Home}/{action=Index}/{id?}"
     );
 
 //Role seeding

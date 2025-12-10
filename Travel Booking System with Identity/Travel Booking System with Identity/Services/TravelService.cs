@@ -24,8 +24,8 @@ namespace Travel_Booking_System_with_Identity.Services
         {
             return dbContext.Bookings
                 .Include(b => b.Package)
-                .Include(b => b.CustomerName)
                 .OrderByDescending(b => b.BookingDate)
+                .AsNoTracking()
                 .ToList();
         }
 
@@ -59,7 +59,7 @@ namespace Travel_Booking_System_with_Identity.Services
                         PackageName = "Paris Adventure",
                         Destination = "Paris, France",
                         Price = 1299.99m,
-                        DurationDays = 5,
+                        Duration = 5,
                         AvailableSeats = 20
                     },
                     new TravelPackage
@@ -67,7 +67,7 @@ namespace Travel_Booking_System_with_Identity.Services
                         PackageName = "Tokyo Experience",
                         Destination = "Tokyo, Japan",
                         Price = 1899.99m,
-                        DurationDays = 7,
+                        Duration = 7,
                         AvailableSeats = 15
                     },
                     new TravelPackage
@@ -75,7 +75,7 @@ namespace Travel_Booking_System_with_Identity.Services
                         PackageName = "Caribbean Cruise",
                         Destination = "Caribbean Islands",
                         Price = 2499.99m,
-                        DurationDays = 10,
+                        Duration = 10,
                         AvailableSeats = 30
                     }
                 };
@@ -85,7 +85,7 @@ namespace Travel_Booking_System_with_Identity.Services
             }
         }
 
-        void ITravelService.UpdateBookingStatus(int bookingId, string status)
+        void ITravelService.ChangeBookingStatus(int bookingId, string status)
         {
             var booking = dbContext.Bookings.Find(bookingId);
             if (booking != null)

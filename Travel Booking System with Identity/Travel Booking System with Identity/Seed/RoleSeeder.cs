@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Travel_Booking_System_with_Identity.Models;
 namespace Travel_Booking_System_with_Identity.Seed
 {
     public static class RoleSeeder
@@ -6,7 +7,7 @@ namespace Travel_Booking_System_with_Identity.Seed
         public static async Task SeedRoles(IServiceProvider serviceProvider)
         {
             var roleManager=serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-            var userManager=serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
+            var userManager=serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
             string[] roles = {"Admin","User"};
             foreach(var role in roles)
             {
@@ -21,7 +22,7 @@ namespace Travel_Booking_System_with_Identity.Seed
 
             if(await userManager.FindByEmailAsync(adminEmail)==null)
             {
-                var adminUser=new IdentityUser
+                var adminUser=new ApplicationUser
                 {
                     UserName=adminEmail,
                     Email=adminEmail,

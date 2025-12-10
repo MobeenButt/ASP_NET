@@ -1,0 +1,40 @@
+﻿@model List<Travel_Booking_System_with_Identity.Models.Booking>
+@{
+    ViewData["Title"] = "User Dashboard";
+    var packages = ViewBag.Packages as List<Travel_Booking_System_with_Identity.Models.TravelPackage> ?? new();
+}
+<h2>User Dashboard</h2>
+
+<h3>Available Packages</h3>
+@foreach (var p in packages)
+{
+    <div style="border:1px solid #ccc;padding:8px;margin-bottom:6px">
+        <strong>@p.PackageName</strong> - @p.Destination <br />
+        Price: @p.Price.ToString("C") | Seats: @p.AvailableSeats | Departure: @p.DepartureDate.ToShortDateString()
+        <form method="post" asp-action="BookPackage">
+            <input type="hidden" name="packageId" value="@p.PackageId" />
+            <input name="customerName" placeholder="Your name" required />
+            <input name="customerEmail" placeholder="Email" required />
+            <input type="number" name="numberOfTravelers" value="1" min="1" />
+            <button type="submit">Book (will be Pending)</button>
+        </form>
+    </div>
+}
+
+<h3>Your Bookings</h3>
+<table border="1">
+    <tr><th>Package</th><th>When</th><th>Travellers</th><th>Total</th><th>Status</th></tr>
+    @foreach (var b in Model)
+    {
+        <tr>
+            <td>@b.Package?.PackageName</td>
+            <td>@b.BookingDate.ToLocalTime().ToString("g")</td>
+            <td>@b.NumberOfTravelers</td>
+            <td>@b.TotalAmount.ToString("C")</td>
+            <td>@b.BookingStatus</td>
+        </tr>
+    }
+</table>
+<form method="post" asp-controller="Account" asp-action="Logout">
+    <button type="submit">Logout</button>
+</form>

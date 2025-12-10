@@ -4,12 +4,12 @@ namespace Travel_Booking_System_with_Identity.Services
 {
     public interface ITravelService
     {
-        List<TravelPackage> GetAllPackages();
-        TravelPackage? GetPackageById(int packageId);
-        List<Booking> GetBookingsByUser(string userEmail);
-        List<Booking> GetAllBookings();
-        Booking CreateBooking(Booking booking);
-        void UpdateBookingStatus(int bookingId, string status);
-        void SeedSamplePackages();
+      public  List<TravelPackage> GetAllPackages();
+        public TravelPackage? GetPackageById(int packageId);
+        public List<Booking> GetBookingsByUser(string userEmail);
+        public List<Booking> GetAllBookings();
+        public Booking CreateBooking(Booking booking);
+        public void ChangeBookingStatus(int bookingId, string status);
+        public void SeedSamplePackages();
     }
 }
