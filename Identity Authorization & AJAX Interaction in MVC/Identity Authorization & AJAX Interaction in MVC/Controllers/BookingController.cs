@@ -16,6 +16,26 @@ namespace Identity_Authorization___AJAX_Interaction_in_MVC.Controllers
             this.dbcontext = dbcontext;
             this.userManager = userManager;
         }
+        [HttpPost]
+        public async Task<IActionResult> CreateBooking(int resourceId)
+        {
+            var user =await userManager.GetUserAsync(User);
+            bool exists = dbcontext.Bookings.Any(b => b.ResourceId == resourceId && b.UserId == user.Id);
+            if (exists)
+            {
+                ModelState.AddModelError("", "You have already booked this resource.");
+                return View();
+            }
 
+            var booking = new Booking
+            {
+                ResourceId = resourceId,
+                UserId = user.Id,
+                BookingDate = DateTime.Now
+            };
+            dbcontext.Bookings.Add(booking);
+            await dbcontext.SaveChangesAsync();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

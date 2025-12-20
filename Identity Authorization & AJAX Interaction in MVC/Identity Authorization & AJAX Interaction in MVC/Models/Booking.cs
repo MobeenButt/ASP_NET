@@ -5,7 +5,7 @@
         public int Id { get; set; }
         public int ResourceId { get; set; }
         public string? UserId { get; set; }
-        public DateTime RequestedOn { get; set; }
+        public DateTime BookingDate { get; set; }
 
         public string? ResourceName { get; set; }
         public string? ResourceType { get; set; }
