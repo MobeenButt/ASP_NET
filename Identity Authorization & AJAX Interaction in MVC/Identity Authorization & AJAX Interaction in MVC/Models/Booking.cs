@@ -1,4 +1,6 @@
-﻿namespace Identity_Authorization___AJAX_Interaction_in_MVC.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Identity_Authorization___AJAX_Interaction_in_MVC.Models
 {
     public class Booking
     {
@@ -11,5 +13,11 @@
         public string? ResourceType { get; set; }
         public string? ResourceLocation { get; set; }
         public string Status { get; set; } = "Pending";
+
+        [ForeignKey("ResourceId")]
+        public Resource? Resource { get; set; }
+
+        [ForeignKey("UserId")]
+        public ApplicationUser? User { get; set; }
     }
 }

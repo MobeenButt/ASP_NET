@@ -1,5 +1,70 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using Identity_Authorization___AJAX_Interaction_in_MVC.Models
+@model List<Resource>
+
 @{
+    ViewData["Title"] = "Resources";
 }
+
+<h2>Available Resources</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Location</th>
+            @if (User.IsInRole("User"))
+            {
+                <th>Actions</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var r in Model)
+        {
+            <tr>
+                <td>@r.Name</td>
+                <td>@r.Type</td>
+                <td>@r.Location</td>
+                @if (User.IsInRole("User"))
+                {
+                    <td>
+                        <button class="btn btn-primary" onclick="request(@r.Id)">Request</button>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function request(id) {
+        // Get anti-forgery token
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+        $.ajax({
+            url: '/Booking/Request',
+            type: 'POST',
+            data: {
+                resourceId: id,
+                __RequestVerificationToken: token
+            },
+            success: function(response) {
+                alert('Booking requested successfully!');
+            },
+            error: function(xhr) {
+                if (xhr.status === 400) {
+                    alert('You have already requested this resource.');
+                } else {
+                    alert('Error: Unable to request booking.');
+                }
+            }
+        });
+    }
+</script>
+
+@* Hidden form to generate anti-forgery token *@
+<form id="tokenForm" style="display:none;">
+    @Html.AntiForgeryToken()
+</form>

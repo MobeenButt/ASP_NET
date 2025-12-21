@@ -18,15 +18,13 @@ namespace Identity_Authorization___AJAX_Interaction_in_MVC.Controllers
             return View(pendingResources);
         }
         [HttpPost]
-        public IActionResult Approve(int resourceId)
+        public IActionResult Approve(int id)
         {
-            //var resource = dbcontext.Resources.FirstOrDefault(r => r.Id == resourceId);
-            var booking = dbcontext.Bookings.Find(resourceId);
+            var booking = dbcontext.Bookings.Find(id);
             booking.Status = "Approved";
             dbcontext.SaveChanges();
             var updated = dbcontext.Bookings.Where(r => r.Status == "Pending").ToList();
-            return PartialView("_PendingResourcesPartial", updated);
-
+            return PartialView("_PendingList", updated);
         }
     }
 }
