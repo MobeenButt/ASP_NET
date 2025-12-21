@@ -19,7 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\" />
+    <Folder Include="Views\Account\" />
+    <Folder Include="Views\Resource\" />
   </ItemGroup>
 
 </Project>

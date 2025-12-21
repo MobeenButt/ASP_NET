@@ -9,6 +9,6 @@
         public string? Location { get; set; }
         public string? CreatedByUserId { get; set; }
         public DateTime CreatedOn { get; set; }
-        public string? BookingStatus { get; set; }
+     
     }
 }
