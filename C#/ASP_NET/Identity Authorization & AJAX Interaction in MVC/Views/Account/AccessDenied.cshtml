@@ -1,0 +1,14 @@
+@{
+    ViewData["Title"] = "Access Denied";
+}
+
+<div class="text-center">
+    <h1 class="text-danger">Access Denied for User</h1>
+    <p class="lead">You do not have permission to access this resource.</p>
+    <p>Please contact your administrator if you believe this is an error.</p>
+    <hr />
+    <p>
+        <a asp-controller="Resource" asp-action="List" class="btn btn-primary">Return to Resources</a>
+        <a asp-controller="Account" asp-action="Login" class="btn btn-secondary">Login as Different User</a>
+    </p>
+</div>

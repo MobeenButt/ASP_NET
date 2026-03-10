@@ -1,0 +1,29 @@
+using Lms.Models;
+using Microsoft.AspNetCore.Identity;
+
+namespace Lms.Services
+{
+    public class NoOpEmailSender : IEmailSender<ApplicationUser>
+    {
+        public Task SendConfirmationLinkAsync(ApplicationUser user, string email, string confirmationLink)
+        {
+            Console.WriteLine($"Confirmation email to: {email}");
+            Console.WriteLine($"Link: {confirmationLink}");
+            return Task.CompletedTask;
+        }
+
+        public Task SendPasswordResetLinkAsync(ApplicationUser user, string email, string resetLink)
+        {
+            Console.WriteLine($"Password reset email to: {email}");
+            Console.WriteLine($"Link: {resetLink}");
+            return Task.CompletedTask;
+        }
+
+        public Task SendPasswordResetCodeAsync(ApplicationUser user, string email, string resetCode)
+        {
+            Console.WriteLine($"Password reset code email to: {email}");
+            Console.WriteLine($"Code: {resetCode}");
+            return Task.CompletedTask;
+        }
+    }
+}

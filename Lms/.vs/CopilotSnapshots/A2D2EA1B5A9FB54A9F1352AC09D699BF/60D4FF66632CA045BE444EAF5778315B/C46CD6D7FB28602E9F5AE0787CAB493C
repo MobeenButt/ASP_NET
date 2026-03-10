@@ -1,0 +1,16 @@
+﻿using Microsoft.AspNetCore.Identity.UI.Services;
+
+namespace Lms.Services
+{
+    public class NoOpEmailSender : IEmailSender
+    {
+        public Task SendEmailAsync(string email, string subject, string htmlMessage)
+        {
+            // For development, just log to console instead of sending email
+            Console.WriteLine($"Email to: {email}");
+            Console.WriteLine($"Subject: {subject}");
+            Console.WriteLine($"Message: {htmlMessage}");
+            return Task.CompletedTask;
+        }
+    }
+}

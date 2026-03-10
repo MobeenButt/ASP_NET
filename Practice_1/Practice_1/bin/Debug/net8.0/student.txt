@@ -1,6 +1,0 @@
-1,Mobeen,30,cs
-1,Mobeen,30,cs
-1,Mobeen,30,cs
-1,Mobeen,30,cs
-1,Mobeen,30,cs
-2,ALI,20,ME
