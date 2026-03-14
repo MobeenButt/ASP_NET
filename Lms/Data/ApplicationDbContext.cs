@@ -1,4 +1,5 @@
 ﻿using Lms.Models;
+using Lms.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 

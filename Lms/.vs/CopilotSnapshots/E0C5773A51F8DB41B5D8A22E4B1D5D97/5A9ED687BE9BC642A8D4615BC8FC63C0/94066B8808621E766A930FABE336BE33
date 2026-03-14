@@ -1,0 +1,43 @@
+﻿using Lms.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Lms.Data;
+using Microsoft.AspNetCore.Authorization;
+
+namespace Lms.Controllers
+{
+    public class EnrollmentController : Controller
+    {
+        private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public EnrollmentController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        {
+            _context = context;
+            _userManager = userManager;
+        }
+        [HttpPost]
+        [Authorize(Roles ="Student")]
+        public async Task<IActionResult>RequestEnrollment(int courseId)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var existing=_context.Enrollments.FirstOrDefault(e=>e.CourseId == courseId && e.StudentId == user.Id);
+            if(existing!=null)
+            {
+                return BadRequest("You have already requested enrollment for this course.");
+            
+            }
+            var enrollment = new Enrollment
+            {
+                CourseId = courseId,
+                StudentId = user.Id,
+                Status = "Pending"
+            };
+            _context.Enrollments.Add(enrollment);
+            await _context.SaveChangesAsync();
+            return Ok(enrollment);
+
+        }
+
+    }
+}

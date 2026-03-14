@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Lms.Models.Course>
+
+<h2>Courses</h2>
+
+@if (User.IsInRole("Admin"))
+{
+    <a asp-controller="Course" asp-action="Create" class="btn btn-primary">Create Course</a>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var course in Model)
+        {
+            <tr>
+                <td>@course.Title</td>
+                <td>@course.Description</td>
+                <td>
+                    <a
+                      asp-controller="Lesson"
+                    asp-action="Index"
+                    asp-route-courseId="@course.Id"
+                    class="btn btn-info">View Lessons
+                </a>
+                    @if (User.IsInRole("Student"))
+                    {
+    <form asp-controller="Enrollment"
+          asp-action="RequestEnrollment"
+          method="post"
+          class="d-inline">
+        <input type="hidden" name="courseId" value="@course.Id" />
+        <button type="submit" class="btn btn-success">Enroll Course</button>
+    </form>
+}
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

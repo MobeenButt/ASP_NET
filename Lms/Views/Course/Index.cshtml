@@ -1,27 +1,66 @@
 ﻿@model IEnumerable<Lms.Models.Course>
 
-<h2>Courses</h2>
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+    <div>
+        <h2 class="mb-0">Courses</h2>
+        <div class="text-muted">Browse courses and view their lessons.</div>
+    </div>
 
-@if (User.IsInRole("Admin"))
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-controller="Course" asp-action="Create" class="btn btn-primary">Create Course</a>
+    }
+</div>
+
+@if (TempData["Message"] is string msg)
 {
-    <a asp-controller="Course" asp-action="Create" class="btn btn-primary">Create Course</a>
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        @msg
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
 }
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-
-    <tbody>
+@if (Model is null || !Model.Any())
+{
+    <div class="empty-state">
+        <h4 class="mb-2">No courses found</h4>
+        <div class="text-muted">Once courses are created, they’ll appear here.</div>
+    </div>
+}
+else
+{
+    <div class="row g-3">
         @foreach (var course in Model)
         {
-            <tr>
-                <td>@course.Title</td>
-                <td>@course.Description</td>
-            </tr>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title mb-1">@course.Title</h5>
+                        <p class="card-text text-muted mb-3">@course.Description</p>
+
+                        <div class="d-flex flex-wrap gap-2">
+                            <a asp-controller="Lesson"
+                               asp-action="Index"
+                               asp-route-courseId="@course.Id"
+                               class="btn btn-outline-primary">
+                                View Lessons
+                            </a>
+
+                            @if (User.IsInRole("Student") && !User.IsInRole("Admin"))
+                            {
+                                <form asp-controller="Enrollment"
+                                      asp-action="RequestEnrollment"
+                                      method="post"
+                                      class="d-inline">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="courseId" value="@course.Id" />
+                                    <button type="submit" class="btn btn-success">Enroll</button>
+                                </form>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
         }
-    </tbody>
-</table>
+    </div>
+}

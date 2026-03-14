@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Lms.Models.Lesson>
+
+<h2>Lessons</h2>
+
+@if (User.IsInRole("Admin"))
+{
+    <a asp-action="Create"
+           asp-route-courseId="@ViewBag.CourseId"
+           class="btn btn-primary">
+        Add Lesson
+    </a>
+}
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>Lesson Title</th>
+            <th>Content</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var lesson in Model)
+        {
+            <tr>
+                <td>@lesson.Title</td>
+                <td>@lesson.Content</td>
+
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+<script>
+
+    $(".enrollBtn").click(function () {
+
+        var button = $(this);
+        var courseId = button.data("course");
+
+        $.ajax({
+
+            url: "/Enrollment/RequestEnrollment",
+            type: "POST",
+            data: { courseId: courseId },
+
+            success: function (response) {
+
+                if (response.success) {
+
+                    button.text("Requested");
+                    button.removeClass("btn-success");
+                    button.addClass("btn-secondary");
+                    button.prop("disabled", true);
+
+                }
+                else {
+
+                    alert(response.message);
+
+                }
+
+            }
+
+        });
+
+    });
+
+</script>
