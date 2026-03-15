@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Lms.Models;
 using Lms.Data;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Lms.Controllers
 {
@@ -30,6 +31,7 @@ namespace Lms.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
+            ViewBag.Categories = new SelectList(_context.Categories.AsNoTracking().ToList(), "Id", "Name");
             return View();
         }
 
@@ -63,6 +65,7 @@ namespace Lms.Controllers
                 ModelState.AddModelError("", "An error occurred while saving the course.");
             }
 
+            ViewBag.Categories = new SelectList(_context.Categories.AsNoTracking().ToList(), "Id", "Name", course.CategoryId);
             return View(course);
         }
 
@@ -71,7 +74,10 @@ namespace Lms.Controllers
         [Authorize(Roles = "Admin,Student")]
         public async Task<IActionResult> Details(int id)
         {
-            var course = await _context.Courses.FirstOrDefaultAsync(c => c.Id == id);
+            var course = await _context.Courses
+                .Include(c => c.Lessons)
+                .Include(c => c.Category) // Include category details
+                .FirstOrDefaultAsync(c => c.Id == id);
             if (course == null)
             {
                 return NotFound();

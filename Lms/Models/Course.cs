@@ -20,5 +20,8 @@ namespace Lms.Models
         public string? CreatedByAdmin { get; set; }
         
         public List<Lesson> Lessons { get; set; } = new List<Lesson>();
+
+        public int CategoryId { get; set; }
+        public Category? Category { get; set; }
     }
 }

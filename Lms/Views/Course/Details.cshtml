@@ -1,1 +1,41 @@
-﻿
+﻿@model Lms.Models.Course
+
+@if (TempData["Message"] is string msg)
+{
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        @msg
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<h2>@Model.Title</h2>
+
+<p>
+    <strong>Description:</strong>
+    @Model.Description
+</p>
+
+<h3>Lessons</h3>
+
+<ul>
+    @foreach (var lesson in Model.Lessons)
+    {
+        <li>
+            <strong>@lesson.Title</strong>
+            <div class="text-muted">@lesson.Content</div>
+        </li>
+    }
+
+</ul>
+
+@if (User.IsInRole("Student") && !User.IsInRole("Admin"))
+{
+    <form asp-controller="Enrollment"
+          asp-action="RequestEnrollment"
+          method="post"
+          class="d-inline">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="courseId" value="@Model.Id" />
+        <button type="submit" class="btn btn-success">Enroll</button>
+    </form>
+}

@@ -1,8 +1,44 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="lms-landing">
+    <div class="lms-landing__hero">
+        <div class="lms-landing__copy">
+            <div class="lms-landing__eyebrow">Learn • Build • Ship</div>
+            <h1 class="lms-landing__h">A learning workspace that feels like a control room.</h1>
+            <p class="lms-landing__p">
+                Manage courses, lessons, and enrollments in a fast, calm interface—built for focus.
+            </p>
+
+            <div class="lms-landing__cta">
+                <a class="btn btn-primary" asp-controller="Course" asp-action="Index">Browse Courses</a>
+                <a class="btn btn-outline-secondary" asp-controller="Enrollment" asp-action="Dashboard">Admin Dashboard</a>
+            </div>
+
+            <div class="lms-landing__meta">
+                <div class="lms-chip"><span class="lms-chip__k">Stack</span><span class="lms-chip__v">.NET 8 • EF Core • Identity</span></div>
+                <div class="lms-chip"><span class="lms-chip__k">Mode</span><span class="lms-chip__v">Midnight Terminal</span></div>
+            </div>
+        </div>
+
+        <div class="lms-landing__panel" aria-hidden="true">
+            <div class="lms-terminal">
+                <div class="lms-terminal__top">
+                    <span class="lms-dot lms-dot--r"></span>
+                    <span class="lms-dot lms-dot--y"></span>
+                    <span class="lms-dot lms-dot--g"></span>
+                    <span class="lms-terminal__title">lms://boot</span>
+                </div>
+                <pre class="lms-terminal__body"><code>
+> auth: ready
+> courses: indexed
+> lessons: cached
+> enrollments: awaiting approvals
+
+TIP: open <span class="lms-accent">Dashboard</span> to approve pending requests.
+                </code></pre>
+            </div>
+        </div>
+    </div>
+</section>

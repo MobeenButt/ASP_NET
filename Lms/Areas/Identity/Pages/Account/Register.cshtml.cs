@@ -124,6 +124,12 @@ namespace Lms.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
 
+                    // New users should default to Student so they can access the application.
+                    if (!await _userManager.IsInRoleAsync(user, "Student"))
+                    {
+                        await _userManager.AddToRoleAsync(user, "Student");
+                    }
+
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));

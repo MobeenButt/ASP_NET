@@ -1,0 +1,46 @@
+@model IEnumerable<Lms.Models.Enrollment>
+
+@if (Model is null || !Model.Any())
+{
+    <div class="text-muted">No pending requests.</div>
+}
+else
+{
+    <div class="lms-tablewrap">
+        <table class="table table-striped align-middle lms-table">
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Course</th>
+                    <th>Status</th>
+                    <th class="text-end">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var enrollment in Model)
+            {
+                <tr>
+                    <td>
+                        <div class="lms-cell">
+                            <div class="lms-cell__main">@(enrollment.Student?.Email ?? enrollment.StudentId)</div>
+                            <div class="lms-cell__sub">Student</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="lms-cell">
+                            <div class="lms-cell__main">@(enrollment.Course?.Title ?? enrollment.CourseId.ToString())</div>
+                            <div class="lms-cell__sub">Course</div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="lms-pill">@enrollment.Status</span>
+                    </td>
+                    <td class="text-end">
+                        <button type="button" class="btn btn-sm btn-success approveBtn" data-id="@enrollment.Id">Approve</button>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+}

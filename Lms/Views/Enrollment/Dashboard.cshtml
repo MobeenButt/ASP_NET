@@ -1,0 +1,46 @@
+@model IEnumerable<Lms.Models.Enrollment>
+
+<section class="admin-shell">
+    <header class="admin-hero">
+        <div class="admin-hero__inner">
+            <div class="admin-hero__title">
+                <div class="admin-hero__kicker">LMS Control Room</div>
+                <h1 class="admin-hero__h">Admin Dashboard</h1>
+                <p class="admin-hero__sub">Approve enrollments, keep courses tidy, and ship lessons fast.</p>
+            </div>
+
+            <nav class="admin-actions" aria-label="Admin quick actions">
+                <a asp-controller="Course" asp-action="Index" class="btn btn-outline-secondary admin-actions__btn">Courses</a>
+                <a asp-controller="Category" asp-action="Index" class="btn btn-outline-secondary admin-actions__btn">Categories</a>
+                <a asp-controller="Course" asp-action="Create" class="btn btn-primary admin-actions__btn">Create Course</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="admin-card" aria-label="Pending enrollment requests">
+        <div class="admin-card__head">
+            <h2 class="admin-card__h">Pending Enrollment Requests</h2>
+            <div class="admin-card__meta">@((Model?.Count() ?? 0)) request(s)</div>
+        </div>
+
+        <div id="requestList" class="admin-card__body">
+            @await Html.PartialAsync("_EnrollementTable", Model)
+        </div>
+    </section>
+</section>
+
+@section Scripts {
+    <script>
+        $(document).on("click", ".approveBtn", function () {
+            var id = $(this).data("id");
+            $.ajax({
+                url: "/Enrollment/Approve",
+                type: "POST",
+                data: { id: id },
+                success: function () {
+                    location.reload();
+                }
+            });
+        });
+    </script>
+}
