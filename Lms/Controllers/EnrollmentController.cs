@@ -76,5 +76,20 @@ namespace Lms.Controllers
                 return RedirectToAction(nameof(Dashboard));
             }
         }
+        [Authorize(Roles ="Student")]
+        public async Task<IActionResult> MyCourses()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user is null)
+            {
+                return Challenge();
+            }
+            var enrollments = _context.Enrollments
+                .Where(e => e.StudentId == user.Id && e.Status == "Approved")
+                .Include(e => e.Course)
+                //.Select(e => e.Course)
+                .ToList();
+            return View(enrollments);
+        }
     }
 }

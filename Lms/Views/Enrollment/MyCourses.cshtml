@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Lms.Models.Enrollment>
+
+@{
+    ViewData["Title"] = "My Courses";
+}
+
+<h1 class="h3 mb-3">@ViewData["Title"]</h1>
+
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th>Course</th>
+                        <th>Status</th>
+                        <th class="text-end">Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @if (Model == null || !Model.Any())
+                    {
+                        <tr>
+                            <td colspan="3" class="text-muted">No courses found.</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Course?.Title</td>
+                                <td>
+                                    <span class="badge bg-secondary">@item.Status</span>
+                                </td>
+                                <td class="text-end">
+                                    @if (item.Status == "Approved")
+                                    {
+                                        <a asp-controller="Lesson"
+                                           asp-action="Index"
+                                           asp-route-courseId="@item.CourseId"
+                                           class="btn btn-sm btn-primary">
+                                            View Lessons
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">—</span>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

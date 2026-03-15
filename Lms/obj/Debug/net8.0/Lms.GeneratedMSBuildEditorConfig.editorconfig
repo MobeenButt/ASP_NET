@@ -98,6 +98,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5yb2xsbWVudFxEYXNoYm9hcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/New folder/Web(.NET)/Lms/Views/Enrollment/MyCourses.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5yb2xsbWVudFxNeUNvdXJzZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/New folder/Web(.NET)/Lms/Views/Enrollment/_EnrollementTable.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5yb2xsbWVudFxfRW5yb2xsZW1lbnRUYWJsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
