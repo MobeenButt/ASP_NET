@@ -11,7 +11,7 @@ namespace Lms.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
-        
+
         public CourseController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
@@ -63,6 +63,19 @@ namespace Lms.Controllers
                 ModelState.AddModelError("", "An error occurred while saving the course.");
             }
 
+            return View(course);
+        }
+
+
+        //load course details - Both Admin and Student can view
+        [Authorize(Roles = "Admin,Student")]
+        public async Task<IActionResult> Details(int id)
+        {
+            var course = await _context.Courses.FirstOrDefaultAsync(c => c.Id == id);
+            if (course == null)
+            {
+                return NotFound();
+            }
             return View(course);
         }
     }

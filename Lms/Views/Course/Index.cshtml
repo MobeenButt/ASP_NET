@@ -39,6 +39,13 @@ else
                         <p class="card-text text-muted mb-3">@course.Description</p>
 
                         <div class="d-flex flex-wrap gap-2">
+                            <a asp-controller="Course"
+                               asp-action="Details"
+                               asp-route-id="@course.Id"
+                               class="btn btn-outline-secondary">
+                                View Details
+                            </a>
+
                             <a asp-controller="Lesson"
                                asp-action="Index"
                                asp-route-courseId="@course.Id"
