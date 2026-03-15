@@ -4,38 +4,49 @@
     ViewData["Title"] = "Create Course";
 }
 
-<h2>Create Course</h2>
-
-<div class="row">
-    <div class="col-md-6">
-        <form asp-controller="Course" asp-action="Create" method="post">
-            <div asp-validation-summary="All" class="text-danger"></div>
-
-            <div class="form-group mb-3">
-                <label asp-for="Title" class="form-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-
-            <div class="form-group mb-3">
-                <label asp-for="Description" class="form-label"></label>
-                <textarea asp-for="Description" class="form-control" rows="4"></textarea>
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group mb-3">
-                <label>Category</label>
-                <select asp-for="CategoryId" class="form-select" asp-items="ViewBag.Categories">
-                    <option value="">-- Select Category --</option>
-                    </select>
-            </div>
-
-            <div class="form-group">
-                <button type="submit" class="btn btn-success">Save</button>
-                <a asp-controller="Course" asp-action="Index" class="btn btn-secondary">Cancel</a>
-            </div>
-        </form>
+<header class="lms-pagehead">
+    <div>
+        <div class="lms-pagehead__k">Admin</div>
+        <h2 class="lms-pagehead__h mb-0">Create Course</h2>
+        <div class="text-muted">Define the title, description, and category.</div>
     </div>
-</div>
+</header>
+
+<section class="admin-card">
+    <div class="admin-card__body">
+        <div class="row">
+            <div class="col-12 col-lg-7">
+                <form asp-controller="Course" asp-action="Create" method="post" class="lms-form">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Title" class="form-label"></label>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Description" class="form-label"></label>
+                        <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label class="form-label">Category</label>
+                        <select asp-for="CategoryId" class="form-select" asp-items="ViewBag.Categories">
+                            <option value="">-- Select Category --</option>
+                        </select>
+                    </div>
+
+                    <div class="d-flex gap-2 flex-wrap">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <a asp-controller="Course" asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

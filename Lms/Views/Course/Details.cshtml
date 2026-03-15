@@ -8,34 +8,62 @@
     </div>
 }
 
-<h2>@Model.Title</h2>
+<header class="lms-pagehead">
+    <div>
+        <div class="lms-pagehead__k">Course</div>
+        <h2 class="lms-pagehead__h mb-0">@Model.Title</h2>
+        <div class="text-muted">@Model.Category?.Name</div>
+    </div>
 
-<p>
-    <strong>Description:</strong>
-    @Model.Description
-</p>
+    <div class="d-flex gap-2 flex-wrap">
+        <a asp-controller="Course" asp-action="Index" class="btn btn-outline-secondary">Back</a>
+        @if (User.IsInRole("Student") && !User.IsInRole("Admin"))
+        {
+            <form asp-controller="Enrollment"
+                  asp-action="RequestEnrollment"
+                  method="post"
+                  class="d-inline">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="courseId" value="@Model.Id" />
+                <button type="submit" class="btn btn-success">Enroll</button>
+            </form>
+        }
+    </div>
+</header>
 
-<h3>Lessons</h3>
+<section class="lms-split">
+    <article class="admin-card">
+        <div class="admin-card__head">
+            <h3 class="admin-card__h">About</h3>
+            <div class="admin-card__meta">ID: @Model.Id</div>
+        </div>
+        <div class="admin-card__body">
+            <p class="lms-prose">@Model.Description</p>
+        </div>
+    </article>
 
-<ul>
-    @foreach (var lesson in Model.Lessons)
-    {
-        <li>
-            <strong>@lesson.Title</strong>
-            <div class="text-muted">@lesson.Content</div>
-        </li>
-    }
-
-</ul>
-
-@if (User.IsInRole("Student") && !User.IsInRole("Admin"))
-{
-    <form asp-controller="Enrollment"
-          asp-action="RequestEnrollment"
-          method="post"
-          class="d-inline">
-        @Html.AntiForgeryToken()
-        <input type="hidden" name="courseId" value="@Model.Id" />
-        <button type="submit" class="btn btn-success">Enroll</button>
-    </form>
-}
+    <article class="admin-card">
+        <div class="admin-card__head">
+            <h3 class="admin-card__h">Lessons</h3>
+            <div class="admin-card__meta">@((Model.Lessons?.Count ?? 0)) item(s)</div>
+        </div>
+        <div class="admin-card__body">
+            @if (Model.Lessons is null || Model.Lessons.Count == 0)
+            {
+                <div class="text-muted">No lessons for this course yet.</div>
+            }
+            else
+            {
+                <ul class="lms-list">
+                    @foreach (var lesson in Model.Lessons)
+                    {
+                        <li class="lms-list__item">
+                            <div class="lms-list__title">@lesson.Title</div>
+                            <div class="text-muted lms-list__sub">@lesson.Content</div>
+                        </li>
+                    }
+                </ul>
+            }
+        </div>
+    </article>
+</section>

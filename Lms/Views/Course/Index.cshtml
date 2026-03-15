@@ -1,16 +1,48 @@
 ﻿@model IEnumerable<Lms.Models.Course>
 
-<div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+<header class="lms-pagehead">
     <div>
-        <h2 class="mb-0">Courses</h2>
-        <div class="text-muted">Browse courses and view their lessons.</div>
+        <div class="lms-pagehead__k">Catalog</div>
+        <h2 class="lms-pagehead__h mb-0">Courses</h2>
+        <div class="text-muted">Browse courses and jump into lessons.</div>
     </div>
 
     @if (User.IsInRole("Admin"))
     {
         <a asp-controller="Course" asp-action="Create" class="btn btn-primary">Create Course</a>
     }
-</div>
+</header>
+
+<form method="get" asp-action="Index">
+    <div class="row">
+        <div class="col-md-4">
+            <input type="text"
+                   name="search"
+                   placeholder="Search course..."
+                   class="form-control" />
+        </div>
+
+        <div class="col-md-4">
+            <select name="categoryId"
+                    class="form-control">
+                <option value="">All Categories</option>
+
+                @foreach (var cat in ViewBag.Categories)
+                {
+                    <option value="@cat.Id">@cat.Name</option>
+                }
+            </select>
+        </div>
+
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary">
+                Search
+            </button>
+        </div>
+    </div>
+</form>
+
+<br />
 
 @if (TempData["Message"] is string msg)
 {
@@ -33,10 +65,17 @@ else
         @foreach (var course in Model)
         {
             <div class="col-12 col-md-6 col-lg-4">
-                <div class="card shadow-sm h-100">
+                <article class="card shadow-sm h-100 lms-course">
                     <div class="card-body">
-                        <h5 class="card-title mb-1">@course.Title</h5>
-                        <p class="card-text text-muted mb-3">@course.Description</p>
+                        <div class="lms-course__top">
+                            <h5 class="card-title mb-1 lms-course__title">@course.Title</h5>
+                            @if (course.Category is not null)
+                            {
+                                <span class="lms-tag">@course.Category.Name</span>
+                            }
+                        </div>
+
+                        <p class="card-text text-muted mb-3 lms-course__desc">@course.Description</p>
 
                         <div class="d-flex flex-wrap gap-2">
                             <a asp-controller="Course"
@@ -52,7 +91,6 @@ else
                                class="btn btn-outline-primary">
                                 View Lessons
                             </a>
-                            <td>@course.Category?.Name</td>
 
                             @if (User.IsInRole("Student") && !User.IsInRole("Admin"))
                             {
@@ -67,7 +105,7 @@ else
                             }
                         </div>
                     </div>
-                </div>
+                </article>
             </div>
         }
     </div>

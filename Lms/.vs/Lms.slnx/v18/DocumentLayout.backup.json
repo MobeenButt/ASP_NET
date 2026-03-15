@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "D:\\New folder\\Web(.NET)\\Lms\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{352C2798-8590-06E5-26AF-5C56FD3CE177}|Lms.csproj|d:\\new folder\\web(.net)\\lms\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{352C2798-8590-06E5-26AF-5C56FD3CE177}|Lms.csproj|solutionrelative:views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{352C2798-8590-06E5-26AF-5C56FD3CE177}|Lms.csproj|d:\\new folder\\web(.net)\\lms\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{352C2798-8590-06E5-26AF-5C56FD3CE177}|Lms.csproj|solutionrelative:models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{352C2798-8590-06E5-26AF-5C56FD3CE177}|Lms.csproj|d:\\new folder\\web(.net)\\lms\\views\\enrollment\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{352C2798-8590-06E5-26AF-5C56FD3CE177}|Lms.csproj|solutionrelative:views\\enrollment\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -49,10 +57,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{352C2798-8590-06E5-26AF-5C56FD3CE177}|Lms.csproj|d:\\new folder\\web(.net)\\lms\\models\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{352C2798-8590-06E5-26AF-5C56FD3CE177}|Lms.csproj|solutionrelative:models\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{352C2798-8590-06E5-26AF-5C56FD3CE177}|Lms.csproj|d:\\new folder\\web(.net)\\lms\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{352C2798-8590-06E5-26AF-5C56FD3CE177}|Lms.csproj|solutionrelative:models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{352C2798-8590-06E5-26AF-5C56FD3CE177}|Lms.csproj|d:\\new folder\\web(.net)\\lms\\areas\\identity\\pages\\account\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -106,7 +110,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -130,20 +134,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
-              "ToolTip": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAACoAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "_LoginPartial.cshtml",
+              "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_LoginPartial.cshtml",
+              "ToolTip": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_LoginPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAABBwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-15T20:54:12.454Z",
+              "WhenOpened": "2026-03-15T21:16:15.536Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Dashboard.cshtml",
               "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Enrollment\\Dashboard.cshtml",
               "RelativeDocumentMoniker": "Views\\Enrollment\\Dashboard.cshtml",
@@ -156,7 +160,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 24,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAACoAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-15T20:54:12.454Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "_EnrollementTable.cshtml",
               "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Enrollment\\_EnrollementTable.cshtml",
               "RelativeDocumentMoniker": "Views\\Enrollment\\_EnrollementTable.cshtml",
@@ -169,7 +186,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "CourseController.cs",
               "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Controllers\\CourseController.cs",
               "RelativeDocumentMoniker": "Controllers\\CourseController.cs",
@@ -182,124 +199,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Data\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
-              "ToolTip": "D:\\New folder\\Web(.NET)\\Lms\\Data\\ApplicationDbContext.cs",
-              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAqwA4AAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-13T22:02:33.079Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "EnrollmentController.cs",
-              "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Controllers\\EnrollmentController.cs",
-              "RelativeDocumentMoniker": "Controllers\\EnrollmentController.cs",
-              "ToolTip": "D:\\New folder\\Web(.NET)\\Lms\\Controllers\\EnrollmentController.cs",
-              "RelativeToolTip": "Controllers\\EnrollmentController.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAAAYwE8AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-13T18:54:53.533Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Category\\Create.cshtml",
-              "RelativeDocumentMoniker": "Views\\Category\\Create.cshtml",
-              "ToolTip": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Category\\Create.cshtml",
-              "RelativeToolTip": "Views\\Category\\Create.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-15T19:57:23.369Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Course\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Course\\Index.cshtml",
-              "ToolTip": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Course\\Index.cshtml",
-              "RelativeToolTip": "Views\\Course\\Index.cshtml",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAUwDYAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-11T19:18:48.371Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Course\\Create.cshtml",
-              "RelativeDocumentMoniker": "Views\\Course\\Create.cshtml",
-              "ToolTip": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Course\\Create.cshtml",
-              "RelativeToolTip": "Views\\Course\\Create.cshtml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAQwBwAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-13T21:52:53.24Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "CategoryController.cs",
-              "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Controllers\\CategoryController.cs",
-              "RelativeDocumentMoniker": "Controllers\\CategoryController.cs",
-              "ToolTip": "D:\\New folder\\Web(.NET)\\Lms\\Controllers\\CategoryController.cs",
-              "RelativeToolTip": "Controllers\\CategoryController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAApAQAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-15T19:53:31.505Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "20260315195249_AddCategory.cs",
-              "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Data\\Migrations\\20260315195249_AddCategory.cs",
-              "RelativeDocumentMoniker": "Data\\Migrations\\20260315195249_AddCategory.cs",
-              "ToolTip": "D:\\New folder\\Web(.NET)\\Lms\\Data\\Migrations\\20260315195249_AddCategory.cs",
-              "RelativeToolTip": "Data\\Migrations\\20260315195249_AddCategory.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-15T19:52:50.142Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Course.cs",
-              "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Models\\Course.cs",
-              "RelativeDocumentMoniker": "Models\\Course.cs",
-              "ToolTip": "D:\\New folder\\Web(.NET)\\Lms\\Models\\Course.cs",
-              "RelativeToolTip": "Models\\Course.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAIwBkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-15T19:51:37.215Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ApplicationUser.cs",
-              "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Models\\ApplicationUser.cs",
-              "RelativeDocumentMoniker": "Models\\ApplicationUser.cs",
-              "ToolTip": "D:\\New folder\\Web(.NET)\\Lms\\Models\\ApplicationUser.cs",
-              "RelativeToolTip": "Models\\ApplicationUser.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-13T22:45:23.685Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 1,
               "Title": "Category.cs",
               "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Models\\Category.cs",
               "RelativeDocumentMoniker": "Models\\Category.cs",
@@ -312,7 +212,124 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\New folder\\Web(.NET)\\Lms\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAqwA4AAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T22:02:33.079Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EnrollmentController.cs",
+              "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Controllers\\EnrollmentController.cs",
+              "RelativeDocumentMoniker": "Controllers\\EnrollmentController.cs",
+              "ToolTip": "D:\\New folder\\Web(.NET)\\Lms\\Controllers\\EnrollmentController.cs",
+              "RelativeToolTip": "Controllers\\EnrollmentController.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAYwE8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T18:54:53.533Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Category\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Category\\Create.cshtml",
+              "ToolTip": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Category\\Create.cshtml",
+              "RelativeToolTip": "Views\\Category\\Create.cshtml",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAUwB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-15T19:57:23.369Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Course\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Course\\Index.cshtml",
+              "ToolTip": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Course\\Index.cshtml",
+              "RelativeToolTip": "Views\\Course\\Index.cshtml",
+              "ViewState": "AgIAACYAAAAAAAAAAADwvzcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-11T19:18:48.371Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Course\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Course\\Create.cshtml",
+              "ToolTip": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Course\\Create.cshtml",
+              "RelativeToolTip": "Views\\Course\\Create.cshtml",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAUwDQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-13T21:52:53.24Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CategoryController.cs",
+              "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Controllers\\CategoryController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CategoryController.cs",
+              "ToolTip": "D:\\New folder\\Web(.NET)\\Lms\\Controllers\\CategoryController.cs",
+              "RelativeToolTip": "Controllers\\CategoryController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAApAQAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T19:53:31.505Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "20260315195249_AddCategory.cs",
+              "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Data\\Migrations\\20260315195249_AddCategory.cs",
+              "RelativeDocumentMoniker": "Data\\Migrations\\20260315195249_AddCategory.cs",
+              "ToolTip": "D:\\New folder\\Web(.NET)\\Lms\\Data\\Migrations\\20260315195249_AddCategory.cs",
+              "RelativeToolTip": "Data\\Migrations\\20260315195249_AddCategory.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T19:52:50.142Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 13,
+              "Title": "Course.cs",
+              "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Models\\Course.cs",
+              "RelativeDocumentMoniker": "Models\\Course.cs",
+              "ToolTip": "D:\\New folder\\Web(.NET)\\Lms\\Models\\Course.cs",
+              "RelativeToolTip": "Models\\Course.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAIwBkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T19:51:37.215Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Models\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "Models\\ApplicationUser.cs",
+              "ToolTip": "D:\\New folder\\Web(.NET)\\Lms\\Models\\ApplicationUser.cs",
+              "RelativeToolTip": "Models\\ApplicationUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T22:45:23.685Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
               "Title": "Register.cshtml.cs",
               "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
               "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
@@ -325,7 +342,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "Enrollment.cs",
               "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Models\\Enrollment.cs",
               "RelativeDocumentMoniker": "Models\\Enrollment.cs",
@@ -338,20 +355,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "Details.cshtml",
               "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Course\\Details.cshtml",
               "RelativeDocumentMoniker": "Views\\Course\\Details.cshtml",
               "ToolTip": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Course\\Details.cshtml",
               "RelativeToolTip": "Views\\Course\\Details.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACcAAAAAAAAAAAAmwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-03-15T19:20:13.178Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "Lesson.cs",
               "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Models\\Lesson.cs",
               "RelativeDocumentMoniker": "Models\\Lesson.cs",
@@ -364,20 +381,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "site.css",
               "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "wwwroot\\css\\site.css",
               "ToolTip": "D:\\New folder\\Web(.NET)\\Lms\\wwwroot\\css\\site.css",
               "RelativeToolTip": "wwwroot\\css\\site.css",
-              "ViewState": "AgIAAHgBAAAAAAAAAIBJwCAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAPYBAAAAAAAAAIBJwDMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2026-03-13T22:56:16.206Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "LessonController.cs",
               "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Controllers\\LessonController.cs",
               "RelativeDocumentMoniker": "Controllers\\LessonController.cs",
@@ -385,35 +402,38 @@
               "RelativeToolTip": "Controllers\\LessonController.cs",
               "ViewState": "AgIAACMAAAAAAAAAAAAkwDQAAABgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-11T19:07:15.324Z"
+              "WhenOpened": "2026-03-11T19:07:15.324Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Lesson\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Lesson\\Index.cshtml",
               "ToolTip": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Lesson\\Index.cshtml",
               "RelativeToolTip": "Views\\Lesson\\Index.cshtml",
-              "ViewState": "AgIAABkAAAAAAAAAAAAmwDIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADMAAAAAAAAAAIBJwDUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-11T19:12:30.449Z"
+              "WhenOpened": "2026-03-11T19:12:30.449Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Lesson\\Create.cshtml",
               "RelativeDocumentMoniker": "Views\\Lesson\\Create.cshtml",
               "ToolTip": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Lesson\\Create.cshtml",
               "RelativeToolTip": "Views\\Lesson\\Create.cshtml",
-              "ViewState": "AgIAABUAAAAAAAAAAAAgwCkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACgAAAAAAAAAAIBJwCoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-11T19:13:36.216Z"
+              "WhenOpened": "2026-03-11T19:13:36.216Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
@@ -426,7 +446,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "AccountController.cs",
               "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
@@ -434,7 +454,8 @@
               "RelativeToolTip": "Controllers\\AccountController.cs",
               "ViewState": "AgIAADoAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-11T19:03:36.173Z"
+              "WhenOpened": "2026-03-11T19:03:36.173Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -1,12 +1,30 @@
 ﻿@model Lms.Models.Category
 
-<h2>Create Category</h2>    
-<form asp-action="Create" method="post">
-    <div class="form-group">
-        <label asp-for="Name" class="form-label"></label>
-        <input asp-for="Name" class="form-control" />
-        <span asp-validation-for="Name" class="text-danger"></span>
+@{
+    ViewData["Title"] = "Create Category";
+}
+
+<header class="lms-pagehead">
+    <div>
+        <div class="lms-pagehead__k">Admin</div>
+        <h2 class="lms-pagehead__h mb-0">Create Category</h2>
+        <div class="text-muted">Group courses under a shared label.</div>
+    </div>
+</header>
+
+<section class="admin-card">
+    <div class="admin-card__body">
+        <form asp-action="Create" method="post" class="lms-form">
+            <div class="form-group mb-3">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-        <br />
-    <button type="submit" class="btn btn-primary">Create</button>
-    </form>
+
+            <div class="d-flex gap-2 flex-wrap">
+                <button type="submit" class="btn btn-primary">Create</button>
+                <a asp-controller="Category" asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</section>

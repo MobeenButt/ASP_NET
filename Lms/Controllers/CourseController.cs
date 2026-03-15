@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.EntityFrameworkCore;
+﻿using Lms.Data;
 using Lms.Models;
-using Lms.Data;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace Lms.Controllers
 {
@@ -21,9 +21,20 @@ namespace Lms.Controllers
 
         // View all courses - Both Admin and Student can view
         [Authorize(Roles = "Admin,Student")]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string search, int? categoryId)
         {
-            var courses = await _context.Courses.ToListAsync();
+            var courses = _context.Courses
+                .Include(c => c.Category) // Include category details
+                .AsQueryable();
+            if (!string.IsNullOrEmpty(search))
+            {
+                courses = courses.Where(c => c.Title.Contains(search));
+            }
+            if (categoryId != null)
+            {
+                courses = courses.Where(c => c.CategoryId == categoryId);
+            }
+            ViewBag.Categories = _context.Categories.ToList();
             return View(courses);
         }
 
