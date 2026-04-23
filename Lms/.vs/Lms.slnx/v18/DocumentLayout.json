@@ -59,10 +59,6 @@
       "RelativeMoniker": "D:0:0:{352C2798-8590-06E5-26AF-5C56FD3CE177}|Lms.csproj|solutionrelative:controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\New folder\\Web(.NET)\\Lms\\Data\\Migrations\\20260315195249_AddCategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Data\\Migrations\\20260315195249_AddCategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{352C2798-8590-06E5-26AF-5C56FD3CE177}|Lms.csproj|d:\\new folder\\web(.net)\\lms\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{352C2798-8590-06E5-26AF-5C56FD3CE177}|Lms.csproj|solutionrelative:models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -105,6 +101,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{352C2798-8590-06E5-26AF-5C56FD3CE177}|Lms.csproj|d:\\new folder\\web(.net)\\lms\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{352C2798-8590-06E5-26AF-5C56FD3CE177}|Lms.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{352C2798-8590-06E5-26AF-5C56FD3CE177}|Lms.csproj|d:\\new folder\\web(.net)\\lms\\data\\migrations\\20260315195249_addcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{352C2798-8590-06E5-26AF-5C56FD3CE177}|Lms.csproj|solutionrelative:data\\migrations\\20260315195249_addcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -144,7 +144,7 @@
               "RelativeDocumentMoniker": "Views\\Enrollment\\MyCourses.cshtml",
               "ToolTip": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Enrollment\\MyCourses.cshtml",
               "RelativeToolTip": "Views\\Enrollment\\MyCourses.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-03-15T22:32:06.435Z",
               "EditorCaption": ""
@@ -159,8 +159,7 @@
               "RelativeToolTip": "Models\\Enrollment.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-13T18:45:47.947Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-13T18:45:47.947Z"
             },
             {
               "$type": "Document",
@@ -172,8 +171,7 @@
               "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAAB8AAAAAAAAAAAAgwC8AAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-13T20:19:02.414Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-13T20:19:02.414Z"
             },
             {
               "$type": "Document",
@@ -185,8 +183,7 @@
               "RelativeToolTip": "Views\\Course\\Index.cshtml",
               "ViewState": "AgIAAC0AAAAAAAAAAAAAAEIAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-11T19:18:48.371Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-11T19:18:48.371Z"
             },
             {
               "$type": "Document",
@@ -198,8 +195,7 @@
               "RelativeToolTip": "Controllers\\EnrollmentController.cs",
               "ViewState": "AgIAAEQAAAAAAAAAAAAUwFYAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-13T18:54:53.533Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-13T18:54:53.533Z"
             },
             {
               "$type": "Document",
@@ -211,8 +207,7 @@
               "RelativeToolTip": "Views\\Shared\\_LoginPartial.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-15T21:16:15.536Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-15T21:16:15.536Z"
             },
             {
               "$type": "Document",
@@ -224,12 +219,11 @@
               "RelativeToolTip": "Controllers\\CourseController.cs",
               "ViewState": "AgIAABQAAAAAAAAAAAAiwCoAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-13T21:53:07.115Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-13T21:53:07.115Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 24,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
@@ -237,8 +231,7 @@
               "RelativeToolTip": "Views\\Home\\Index.cshtml",
               "ViewState": "AgIAACoAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-15T20:54:12.454Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-15T20:54:12.454Z"
             },
             {
               "$type": "Document",
@@ -250,8 +243,7 @@
               "RelativeToolTip": "Views\\Enrollment\\Dashboard.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-15T20:34:51.333Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-15T20:34:51.333Z"
             },
             {
               "$type": "Document",
@@ -263,8 +255,7 @@
               "RelativeToolTip": "Views\\Enrollment\\_EnrollementTable.cshtml",
               "ViewState": "AgIAABgAAAAAAAAAAAAQwC4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-15T20:35:01.958Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-15T20:35:01.958Z"
             },
             {
               "$type": "Document",
@@ -276,8 +267,7 @@
               "RelativeToolTip": "Models\\Category.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-15T19:45:19.691Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-15T19:45:19.691Z"
             },
             {
               "$type": "Document",
@@ -289,8 +279,7 @@
               "RelativeToolTip": "Data\\ApplicationDbContext.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAqwA4AAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-13T22:02:33.079Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-13T22:02:33.079Z"
             },
             {
               "$type": "Document",
@@ -302,8 +291,7 @@
               "RelativeToolTip": "Views\\Category\\Create.cshtml",
               "ViewState": "AgIAAAQAAAAAAAAAAAAUwB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-15T19:57:23.369Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-15T19:57:23.369Z"
             },
             {
               "$type": "Document",
@@ -315,8 +303,7 @@
               "RelativeToolTip": "Views\\Course\\Create.cshtml",
               "ViewState": "AgIAAB0AAAAAAAAAAAAUwDQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-13T21:52:53.24Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-13T21:52:53.24Z"
             },
             {
               "$type": "Document",
@@ -328,12 +315,11 @@
               "RelativeToolTip": "Controllers\\CategoryController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAApAQAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-15T19:53:31.505Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-15T19:53:31.505Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 25,
               "Title": "20260315195249_AddCategory.cs",
               "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Data\\Migrations\\20260315195249_AddCategory.cs",
               "RelativeDocumentMoniker": "Data\\Migrations\\20260315195249_AddCategory.cs",
@@ -341,12 +327,11 @@
               "RelativeToolTip": "Data\\Migrations\\20260315195249_AddCategory.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-15T19:52:50.142Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-15T19:52:50.142Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 15,
               "Title": "Course.cs",
               "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Models\\Course.cs",
               "RelativeDocumentMoniker": "Models\\Course.cs",
@@ -354,12 +339,11 @@
               "RelativeToolTip": "Models\\Course.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAIwBkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-15T19:51:37.215Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-15T19:51:37.215Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 14,
               "Title": "ApplicationUser.cs",
               "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Models\\ApplicationUser.cs",
               "RelativeDocumentMoniker": "Models\\ApplicationUser.cs",
@@ -367,12 +351,11 @@
               "RelativeToolTip": "Models\\ApplicationUser.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-13T22:45:23.685Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-13T22:45:23.685Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 16,
               "Title": "Register.cshtml.cs",
               "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
               "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
@@ -380,12 +363,11 @@
               "RelativeToolTip": "Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
               "ViewState": "AgIAAHYAAAAAAAAAAAAtwIQAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-11T19:04:12.723Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-11T19:04:12.723Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 17,
               "Title": "Details.cshtml",
               "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Course\\Details.cshtml",
               "RelativeDocumentMoniker": "Views\\Course\\Details.cshtml",
@@ -393,12 +375,11 @@
               "RelativeToolTip": "Views\\Course\\Details.cshtml",
               "ViewState": "AgIAACcAAAAAAAAAAAAmwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-15T19:20:13.178Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-15T19:20:13.178Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 18,
               "Title": "Lesson.cs",
               "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Models\\Lesson.cs",
               "RelativeDocumentMoniker": "Models\\Lesson.cs",
@@ -406,12 +387,11 @@
               "RelativeToolTip": "Models\\Lesson.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAgwAsAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-13T18:45:56.762Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-13T18:45:56.762Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 23,
               "Title": "site.css",
               "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "wwwroot\\css\\site.css",
@@ -419,12 +399,11 @@
               "RelativeToolTip": "wwwroot\\css\\site.css",
               "ViewState": "AgIAAPYBAAAAAAAAAIBJwDMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-03-13T22:56:16.206Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-13T22:56:16.206Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 19,
               "Title": "LessonController.cs",
               "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Controllers\\LessonController.cs",
               "RelativeDocumentMoniker": "Controllers\\LessonController.cs",
@@ -432,12 +411,11 @@
               "RelativeToolTip": "Controllers\\LessonController.cs",
               "ViewState": "AgIAACMAAAAAAAAAAAAkwDQAAABgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-11T19:07:15.324Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-11T19:07:15.324Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 20,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Lesson\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Lesson\\Index.cshtml",
@@ -445,12 +423,11 @@
               "RelativeToolTip": "Views\\Lesson\\Index.cshtml",
               "ViewState": "AgIAADMAAAAAAAAAAIBJwDUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-11T19:12:30.449Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-11T19:12:30.449Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 21,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Views\\Lesson\\Create.cshtml",
               "RelativeDocumentMoniker": "Views\\Lesson\\Create.cshtml",
@@ -458,12 +435,11 @@
               "RelativeToolTip": "Views\\Lesson\\Create.cshtml",
               "ViewState": "AgIAACgAAAAAAAAAAIBJwCoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-11T19:13:36.216Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-11T19:13:36.216Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 22,
               "Title": "AccountController.cs",
               "DocumentMoniker": "D:\\New folder\\Web(.NET)\\Lms\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
@@ -471,8 +447,7 @@
               "RelativeToolTip": "Controllers\\AccountController.cs",
               "ViewState": "AgIAADoAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-11T19:03:36.173Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-11T19:03:36.173Z"
             }
           ]
         }
